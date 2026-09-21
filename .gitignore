@@ -1,5 +1,29 @@
+# Dependencies
 node_modules/
+
+# Build
 dist/
-.vercel
-.DS_Store
+
+# Vercel
+.vercel/
+
+# Environment and Logs
+.env
+.env.*
 *.log
+npm-debug.log*
+yarn-debug.log*
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Internal drafts, prompts and scratch assets
+*.pdf
+ChatGPT*.png
+fotos mediva/
+collab_*
+diretrizez.md
+PROMPT_*.md
+CONTEÚDO*.md
+DESIGN*.md
