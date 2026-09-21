@@ -57,16 +57,31 @@ document.querySelectorAll('#mobile-menu a').forEach(link => {
   });
 });
 
-// Header scroll effect
+// Smart Header scroll effect
 const header = document.getElementById('main-header');
+let lastScrollY = window.scrollY;
+
 window.addEventListener('scroll', () => {
-  if (window.scrollY > 50) {
-    header?.classList.add('shadow-md', 'py-2');
-    header?.classList.remove('py-4');
-  } else {
-    header?.classList.remove('shadow-md', 'py-2');
-    header?.classList.add('py-4');
+  if (!header) return;
+  const currentScrollY = window.scrollY;
+  
+  // At the top of the page
+  if (currentScrollY <= 50) {
+    header.classList.remove('-translate-y-full', 'bg-white/95', 'backdrop-blur-md', 'shadow-soft', 'py-2');
+    header.classList.add('bg-transparent', 'py-4');
+  } 
+  // Scrolling down
+  else if (currentScrollY > lastScrollY) {
+    header.classList.add('-translate-y-full');
+    header.classList.remove('py-4');
+  } 
+  // Scrolling up
+  else {
+    header.classList.remove('-translate-y-full', 'bg-transparent', 'py-4');
+    header.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-soft', 'py-2');
   }
+  
+  lastScrollY = currentScrollY;
 });
 
 // Animations (Awwwards Style)
@@ -124,20 +139,18 @@ window.addEventListener('DOMContentLoaded', () => {
   const carousel3D = document.querySelector('.carousel-3d');
   const cards3D = Array.from(document.querySelectorAll('.card-3d'));
 
-  if (programasSection && carousel3D && cards3D.length > 0) {
+    if (programasSection && carousel3D && cards3D.length > 0) {
     const numCards = cards3D.length;
     const anglePerCard = 360 / numCards;
-    const lastAngle = anglePerCard * (numCards - 1); // o último card termina de frente (sem repetir o 1º)
-    const scrollPerCard = 500; // px de scroll para passar de um card ao próximo
+    const scrollPerCard = window.innerWidth < 768 ? 350 : 500; 
     const setOpacity = cards3D.map((card) => gs.quickSetter(card, 'opacity'));
     let activeIndex = -1;
 
-    // O GSAP aplica translate ANTES de rotate, então "rotationY + translateZ" não forma um círculo
-    // (todos os cards ficam empilhados no mesmo ponto). Para montar o anel, cada card gira em torno
-    // de um ponto atrás dele (transform-origin com Z negativo), e o container gira em torno do mesmo ponto.
     function layoutCards() {
       const cardWidth = cards3D[0].offsetWidth;
-      const radius = Math.round((cardWidth / (2 * Math.tan(Math.PI / numCards))) * 1.8);
+      const isMobile = window.innerWidth < 768;
+      const multiplier = isMobile ? 1.3 : 1.8;
+      const radius = Math.round((cardWidth / (2 * Math.tan(Math.PI / numCards))) * multiplier);
       const origin = `50% 50% ${-radius}px`;
 
       gs.set(carousel3D, { transformOrigin: origin });
@@ -146,15 +159,19 @@ window.addEventListener('DOMContentLoaded', () => {
       });
     }
 
-    // Card ativo (classe .active) e opacidade proporcional à distância angular da frente
     function updateCards(progress) {
-      const rotation = progress * lastAngle;
-      const nextActive = Math.min(numCards - 1, Math.max(0, Math.round(rotation / anglePerCard)));
+      const rotation = progress * 360;
+      let nextActive = Math.round(rotation / anglePerCard);
+      if (nextActive >= numCards) nextActive = 0; // Wrap around for infinite loop feel
 
       cards3D.forEach((card, i) => {
         let delta = (((i * anglePerCard - rotation) % 360) + 360) % 360;
         if (delta > 180) delta -= 360;
-        setOpacity[i](1 - 0.45 * Math.min(Math.abs(delta) / anglePerCard, 1));
+        
+        const dist = Math.min(Math.abs(delta) / anglePerCard, 1);
+        setOpacity[i](1 - 0.6 * dist);
+        const scale = 1.05 - 0.2 * dist;
+        gs.set(card, { scale: scale });
       });
 
       if (nextActive === activeIndex) return;
@@ -167,23 +184,37 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 
     layoutCards();
-    // Recalcula o anel antes de cada refresh do ScrollTrigger (inclui resize e troca de breakpoint)
     ScrollTrigger.addEventListener('refreshInit', layoutCards);
 
-    gs.to(carousel3D, {
-      rotationY: -lastAngle,
-      ease: 'none',
-      onUpdate: function () { updateCards(this.progress()); },
-      scrollTrigger: {
-        trigger: programasSection,
-        start: 'top top',
-        end: () => `+=${scrollPerCard * (numCards - 1)}`,
-        pin: true,
-        anticipatePin: 1,
-        scrub: 0.6,
-        invalidateOnRefresh: true,
-        refreshPriority: 1 // o pin precisa ser medido antes dos triggers das seções abaixo dele
-      }
+    const st = ScrollTrigger.create({
+      animation: gs.to(carousel3D, {
+        rotationY: -360,
+        ease: 'none',
+        onUpdate: function () { updateCards(this.progress()); }
+      }),
+      trigger: programasSection,
+      start: 'top top',
+      end: () => `+=${scrollPerCard * numCards}`,
+      pin: true,
+      anticipatePin: 1,
+      scrub: 0.6,
+      snap: {
+        snapTo: 1 / numCards,
+        duration: { min: 0.2, max: 0.6 },
+        ease: "power1.inOut"
+      },
+      invalidateOnRefresh: true,
+      refreshPriority: 1
+    });
+
+    cards3D.forEach((card, i) => {
+      card.addEventListener('click', () => {
+        if (st && st.start !== undefined) {
+          const targetScroll = st.start + (i * scrollPerCard);
+          lenis.scrollTo(targetScroll, { duration: 1.2 });
+        }
+      });
+      card.style.cursor = 'pointer';
     });
 
     updateCards(0);

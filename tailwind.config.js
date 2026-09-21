@@ -17,7 +17,7 @@ export default {
         'brand-whatsapp': '#25D366'
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'],
+        sans: ['Montserrat', 'sans-serif'],
         heading: ['Montserrat', 'sans-serif'],
       },
       boxShadow: {

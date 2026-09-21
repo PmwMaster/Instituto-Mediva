@@ -34,7 +34,7 @@
   }
   
   .glass-card {
-    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-soft;
+    @apply bg-white/50 backdrop-blur-2xl shadow-[0_8px_32px_rgba(0,0,0,0.04)];
   }
   
   /* Utilities for GSAP animation */
@@ -67,7 +67,7 @@
   
   .card-3d.active .card-details {
     opacity: 1;
-    max-height: 250px; /* Expands to reveal content */
+    max-height: 400px; /* Expands to reveal content */
   }
   
   .card-3d.active .card-icon {
