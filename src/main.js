@@ -134,89 +134,81 @@ window.addEventListener('DOMContentLoaded', () => {
     );
   });
 
-  // 3D Carousel (Programas)
-  const programasSection = document.getElementById('programas');
-  const carousel3D = document.querySelector('.carousel-3d');
-  const cards3D = Array.from(document.querySelectorAll('.card-3d'));
+  // Clean Lateral Carousel (Programas)
+  const carousel = document.getElementById('programs-carousel');
+  const prevBtn = document.getElementById('carousel-prev');
+  const nextBtn = document.getElementById('carousel-next');
+  const dots = document.querySelectorAll('#carousel-dots button');
 
-    if (programasSection && carousel3D && cards3D.length > 0) {
-    const numCards = cards3D.length;
-    const anglePerCard = 360 / numCards;
-    const scrollPerCard = window.innerWidth < 768 ? 350 : 500; 
-    const setOpacity = cards3D.map((card) => gs.quickSetter(card, 'opacity'));
-    let activeIndex = -1;
+  if (carousel) {
+    const getCardWidth = () => {
+      const firstCard = carousel.querySelector('.carousel-card');
+      return firstCard ? firstCard.offsetWidth + 24 : 380;
+    };
 
-    function layoutCards() {
-      const cardWidth = cards3D[0].offsetWidth;
-      const isMobile = window.innerWidth < 768;
-      const multiplier = isMobile ? 1.3 : 1.8;
-      const radius = Math.round((cardWidth / (2 * Math.tan(Math.PI / numCards))) * multiplier);
-      const origin = `50% 50% ${-radius}px`;
-
-      gs.set(carousel3D, { transformOrigin: origin });
-      cards3D.forEach((card, i) => {
-        gs.set(card, { xPercent: -50, rotationY: i * anglePerCard, transformOrigin: origin });
-      });
-    }
-
-    function updateCards(progress) {
-      const rotation = progress * 360;
-      let nextActive = Math.round(rotation / anglePerCard);
-      if (nextActive >= numCards) nextActive = 0; // Wrap around for infinite loop feel
-
-      cards3D.forEach((card, i) => {
-        let delta = (((i * anglePerCard - rotation) % 360) + 360) % 360;
-        if (delta > 180) delta -= 360;
-        
-        const dist = Math.min(Math.abs(delta) / anglePerCard, 1);
-        setOpacity[i](1 - 0.6 * dist);
-        const scale = 1.05 - 0.2 * dist;
-        gs.set(card, { scale: scale });
-      });
-
-      if (nextActive === activeIndex) return;
-      activeIndex = nextActive;
-      cards3D.forEach((card, i) => {
-        const isActive = i === activeIndex;
-        card.classList.toggle('active', isActive);
-        card.querySelectorAll('a').forEach((link) => { link.tabIndex = isActive ? 0 : -1; });
-      });
-    }
-
-    layoutCards();
-    ScrollTrigger.addEventListener('refreshInit', layoutCards);
-
-    const st = ScrollTrigger.create({
-      animation: gs.to(carousel3D, {
-        rotationY: -360,
-        ease: 'none',
-        onUpdate: function () { updateCards(this.progress()); }
-      }),
-      trigger: programasSection,
-      start: 'top top',
-      end: () => `+=${scrollPerCard * numCards}`,
-      pin: true,
-      anticipatePin: 1,
-      scrub: 0.6,
-      snap: {
-        snapTo: 1 / numCards,
-        duration: { min: 0.2, max: 0.6 },
-        ease: "power1.inOut"
-      },
-      invalidateOnRefresh: true,
-      refreshPriority: 1
-    });
-
-    cards3D.forEach((card, i) => {
-      card.addEventListener('click', () => {
-        if (st && st.start !== undefined) {
-          const targetScroll = st.start + (i * scrollPerCard);
-          lenis.scrollTo(targetScroll, { duration: 1.2 });
+    const updateDots = () => {
+      const cardWidth = getCardWidth();
+      const activeIdx = Math.min(
+        dots.length - 1,
+        Math.max(0, Math.round(carousel.scrollLeft / cardWidth))
+      );
+      dots.forEach((dot, idx) => {
+        if (idx === activeIdx) {
+          dot.classList.remove('bg-slate-300');
+          dot.classList.add('bg-brand-gold', 'w-8');
+        } else {
+          dot.classList.remove('bg-brand-gold', 'w-8');
+          dot.classList.add('bg-slate-300', 'w-2.5');
         }
       });
-      card.style.cursor = 'pointer';
+    };
+
+    prevBtn?.addEventListener('click', () => {
+      carousel.scrollBy({ left: -getCardWidth(), behavior: 'smooth' });
     });
 
-    updateCards(0);
+    nextBtn?.addEventListener('click', () => {
+      carousel.scrollBy({ left: getCardWidth(), behavior: 'smooth' });
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', () => {
+        const index = parseInt(dot.getAttribute('data-index') || '0', 10);
+        carousel.scrollTo({ left: index * getCardWidth(), behavior: 'smooth' });
+      });
+    });
+
+    carousel.addEventListener('scroll', () => {
+      window.requestAnimationFrame(updateDots);
+    });
+
+    // Mouse Drag to Scroll
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    carousel.addEventListener('mousedown', (e) => {
+      isDown = true;
+      startX = e.pageX - carousel.offsetLeft;
+      scrollLeft = carousel.scrollLeft;
+    });
+
+    window.addEventListener('mouseup', () => {
+      isDown = false;
+    });
+
+    carousel.addEventListener('mouseleave', () => {
+      isDown = false;
+    });
+
+    carousel.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - carousel.offsetLeft;
+      const walk = (x - startX) * 1.5;
+      carousel.scrollLeft = scrollLeft - walk;
+    });
+
+    updateDots();
   }
 });
