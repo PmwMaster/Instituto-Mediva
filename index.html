@@ -160,329 +160,252 @@
     </div>
   </section>
 
-  <!-- Programas (Carrossel Lateral Clean) -->
-  <section id="programas" class="section-padding bg-slate-50/70 relative overflow-hidden border-y border-slate-100">
-    <div class="container-custom">
-      <!-- Section Header with Controls -->
-      <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
-        <div class="max-w-2xl">
-          <span class="inline-block text-brand-gold font-bold uppercase tracking-widest text-xs md:text-sm mb-3">Conteúdos e Formações</span>
-          <h2 class="text-3xl md:text-4xl lg:text-5xl font-extrabold text-brand-navy leading-tight">
-            Nossos Programas<br/><em class="font-light italic text-brand-gold">de Capacitação</em>
-          </h2>
-          <p class="text-slate-600 text-base md:text-lg mt-4 leading-relaxed">
-            Formações modulares e práticas desenhadas para desenvolver competências clínicas essenciais na rotina da Atenção Primária.
-          </p>
-        </div>
+  <!-- Programas (3D Coverflow Carousel) -->
+  <section id="programas" class="bg-brand-white overflow-hidden relative h-screen w-full flex flex-col items-center justify-center">
+    
+    <!-- Pinned Header Title -->
+    <div class="absolute top-24 left-0 w-full z-20 px-6 md:px-12 text-center pointer-events-none">
+      <h2 class="text-3xl md:text-5xl font-extrabold text-brand-navy mb-4">Nossos Programas<br/><span class="text-brand-gold font-light italic">de Capacitação</span></h2>
+    </div>
 
-        <!-- Navigation Buttons -->
-        <div class="flex items-center gap-3 self-start md:self-end">
-          <button id="carousel-prev" aria-label="Anterior" class="w-12 h-12 rounded-full bg-white border border-slate-200 text-brand-navy flex items-center justify-center shadow-sm hover:bg-brand-navy hover:text-white hover:border-brand-navy transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-gold active:scale-95">
-            <i data-lucide="chevron-left" class="w-6 h-6"></i>
-          </button>
-          <button id="carousel-next" aria-label="Próximo" class="w-12 h-12 rounded-full bg-white border border-slate-200 text-brand-navy flex items-center justify-center shadow-sm hover:bg-brand-navy hover:text-white hover:border-brand-navy transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-brand-gold active:scale-95">
-            <i data-lucide="chevron-right" class="w-6 h-6"></i>
-          </button>
-        </div>
-      </div>
-
-      <!-- Horizontal Carousel Track -->
-      <div id="programs-carousel" class="flex gap-6 overflow-x-auto scroll-smooth snap-x snap-mandatory py-4 no-scrollbar cursor-grab active:cursor-grabbing select-none -mx-6 px-6 md:mx-0 md:px-0">
+    <!-- 3D Carousel Perspective Container -->
+    <!-- h-[320px] makes it a square since w-[320px] -->
+    <div class="carousel-viewport w-full h-[400px] md:h-[450px] mt-28 relative" style="perspective: 1200px;">
+      
+      <!-- 3D Wrapper that rotates -->
+      <div class="carousel-3d absolute inset-0 w-full h-full flex justify-center" style="transform-style: preserve-3d;">
         
-        <!-- Card 1: Atenção Primária -->
-        <div class="carousel-card w-[310px] sm:w-[350px] md:w-[370px] flex-shrink-0 snap-start bg-white rounded-2xl border border-slate-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-xl hover:border-brand-gold/50 p-7 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-6">
-              <div class="w-14 h-14 rounded-xl bg-brand-gold/15 flex items-center justify-center text-brand-gold">
-                <i data-lucide="heart-pulse" class="w-7 h-7"></i>
+        <!-- Card 1 -->
+        <div class="card-3d absolute top-0 left-1/2 w-[280px] md:w-[320px] h-full rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200 flex flex-col justify-center p-6" style="transform-style: preserve-3d;">
+          <div class="relative z-20 w-full text-center flex flex-col items-center">
+            <i data-lucide="heart-pulse" class="w-12 h-12 text-brand-gold mb-4 card-icon transition-transform duration-500"></i>
+            <h3 class="text-xl md:text-2xl font-bold text-brand-navy mb-2 transition-all duration-500">Atenção Primária</h3>
+            
+            <!-- Hidden details -->
+            <div class="card-details overflow-hidden transition-all duration-500 opacity-0 max-h-0 w-full text-left mt-4 border-t border-slate-100 pt-4">
+              <p class="text-slate-600 text-xs mb-3 font-medium">Abordagem integral, prevenção e promoção da saúde.</p>
+              
+              <div class="mb-3">
+                <div class="flex items-center gap-1 mb-1">
+                  <i data-lucide="clock" class="w-3 h-3 text-brand-gold"></i>
+                  <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Carga Horária</span>
+                </div>
+                <div class="flex flex-wrap gap-1">
+                  <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">4h</span>
+                  <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">8h</span>
+                  <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">12h</span>
+                  <span class="text-[10px] bg-brand-navy/5 text-brand-navy font-bold px-2 py-0.5 rounded-full">16h</span>
+                </div>
               </div>
-              <span class="text-[11px] font-bold uppercase tracking-wider text-brand-navy/60 bg-slate-100 px-2.5 py-1 rounded-full">APS Integral</span>
-            </div>
-
-            <h3 class="text-xl md:text-2xl font-bold text-brand-navy mb-3">Atenção Primária</h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">Abordagem integral, prevenção, acolhimento e promoção da saúde nas equipes multiprofissionais.</p>
-
-            <!-- Carga Horária -->
-            <div class="mb-5 pb-5 border-b border-slate-100">
-              <div class="flex items-center gap-1.5 mb-2">
-                <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-gold"></i>
-                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Cargas Horárias Disponíveis</span>
+            
+              <div class="mb-4">
+                <div class="flex items-center gap-1 mb-1">
+                  <i data-lucide="book-open" class="w-3 h-3 text-brand-gold"></i>
+                  <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Material Exclusivo</span>
+                </div>
+                <ul class="text-[11px] text-slate-600 space-y-0.5 pl-4 list-disc marker:text-brand-gold">
+                  <li>Guia MEDIVA de Atenção Primária</li>
+                  <li>Fluxos e protocolos da APS</li>
+                  <li>Casos práticos e Mapa de Cuidado</li>
+                </ul>
               </div>
-              <div class="flex flex-wrap gap-1.5">
-                <span class="text-xs bg-slate-100 text-slate-700 font-medium px-2.5 py-1 rounded-md">4h</span>
-                <span class="text-xs bg-slate-100 text-slate-700 font-medium px-2.5 py-1 rounded-md">8h</span>
-                <span class="text-xs bg-slate-100 text-slate-700 font-medium px-2.5 py-1 rounded-md">12h</span>
-                <span class="text-xs bg-brand-navy/10 text-brand-navy font-bold px-2.5 py-1 rounded-md">16h</span>
-              </div>
-            </div>
-
-            <!-- Material Exclusivo -->
-            <div class="mb-6">
-              <div class="flex items-center gap-1.5 mb-2">
-                <i data-lucide="book-open" class="w-3.5 h-3.5 text-brand-gold"></i>
-                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Material Exclusivo</span>
-              </div>
-              <ul class="text-xs text-slate-600 space-y-1.5 pl-4 list-disc marker:text-brand-gold">
-                <li>Guia MEDIVA de Atenção Primária</li>
-                <li>Fluxos e protocolos atualizados da APS</li>
-                <li>Casos práticos e Mapa de Cuidado</li>
-              </ul>
+            
+              <a href="#contato" class="inline-flex w-full justify-center items-center px-4 py-2 bg-brand-navy text-white rounded-lg font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider">Solicitar Proposta</a>
             </div>
           </div>
-
-          <a href="#contato" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold hover:text-white transition-all duration-300 text-xs uppercase tracking-wider shadow-sm">
-            Solicitar Proposta
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-          </a>
         </div>
 
-        <!-- Card 2: Urgências na APS -->
-        <div class="carousel-card w-[310px] sm:w-[350px] md:w-[370px] flex-shrink-0 snap-start bg-white rounded-2xl border border-slate-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-xl hover:border-brand-gold/50 p-7 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-6">
-              <div class="w-14 h-14 rounded-xl bg-brand-gold/15 flex items-center justify-center text-brand-gold">
-                <i data-lucide="activity" class="w-7 h-7"></i>
+        <!-- Card 2 -->
+        <div class="card-3d absolute top-0 left-1/2 w-[280px] md:w-[320px] h-full rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200 flex flex-col justify-center p-6" style="transform-style: preserve-3d;">
+          <div class="relative z-20 w-full text-center flex flex-col items-center">
+            <i data-lucide="activity" class="w-12 h-12 text-brand-gold mb-4 card-icon transition-transform duration-500"></i>
+            <h3 class="text-xl md:text-2xl font-bold text-brand-navy mb-2 transition-all duration-500">Urgências na APS</h3>
+            <div class="card-details overflow-hidden transition-all duration-500 opacity-0 max-h-0 w-full text-left mt-4 border-t border-slate-100 pt-4">
+              <p class="text-slate-600 text-xs mb-3 font-medium">Reconhecimento rápido, estabilização e condutas seguras.</p>
+              
+              <div class="mb-3">
+                <div class="flex items-center gap-1 mb-1">
+                  <i data-lucide="clock" class="w-3 h-3 text-brand-gold"></i>
+                  <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Carga Horária</span>
+                </div>
+                <div class="flex flex-wrap gap-1">
+                  <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">4h</span>
+                  <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">8h</span>
+                  <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">12h</span>
+                  <span class="text-[10px] bg-brand-navy/5 text-brand-navy font-bold px-2 py-0.5 rounded-full">16h</span>
+                </div>
               </div>
-              <span class="text-[11px] font-bold uppercase tracking-wider text-brand-navy/60 bg-slate-100 px-2.5 py-1 rounded-full">Emergência</span>
-            </div>
-
-            <h3 class="text-xl md:text-2xl font-bold text-brand-navy mb-3">Urgências na APS</h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">Reconhecimento rápido de gravidade, estabilização imediata e condutas clínicas seguras.</p>
-
-            <!-- Carga Horária -->
-            <div class="mb-5 pb-5 border-b border-slate-100">
-              <div class="flex items-center gap-1.5 mb-2">
-                <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-gold"></i>
-                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Cargas Horárias Disponíveis</span>
+            
+              <div class="mb-4">
+                <div class="flex items-center gap-1 mb-1">
+                  <i data-lucide="book-open" class="w-3 h-3 text-brand-gold"></i>
+                  <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Material Exclusivo</span>
+                </div>
+                <ul class="text-[11px] text-slate-600 space-y-0.5 pl-4 list-disc marker:text-brand-gold">
+                  <li>Manual de Urgências na APS</li>
+                  <li>Protocolos e Algoritmos de atendimento</li>
+                  <li>Simulações e casos práticos</li>
+                </ul>
               </div>
-              <div class="flex flex-wrap gap-1.5">
-                <span class="text-xs bg-slate-100 text-slate-700 font-medium px-2.5 py-1 rounded-md">4h</span>
-                <span class="text-xs bg-slate-100 text-slate-700 font-medium px-2.5 py-1 rounded-md">8h</span>
-                <span class="text-xs bg-slate-100 text-slate-700 font-medium px-2.5 py-1 rounded-md">12h</span>
-                <span class="text-xs bg-brand-navy/10 text-brand-navy font-bold px-2.5 py-1 rounded-md">16h</span>
-              </div>
-            </div>
-
-            <!-- Material Exclusivo -->
-            <div class="mb-6">
-              <div class="flex items-center gap-1.5 mb-2">
-                <i data-lucide="book-open" class="w-3.5 h-3.5 text-brand-gold"></i>
-                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Material Exclusivo</span>
-              </div>
-              <ul class="text-xs text-slate-600 space-y-1.5 pl-4 list-disc marker:text-brand-gold">
-                <li>Manual Prático de Urgências na APS</li>
-                <li>Protocolos e Algoritmos de atendimento rápido</li>
-                <li>Simulações clínicas com casos reais</li>
-              </ul>
+            
+              <a href="#contato" class="inline-flex w-full justify-center items-center px-4 py-2 bg-brand-navy text-white rounded-lg font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider">Solicitar Proposta</a>
             </div>
           </div>
-
-          <a href="#contato" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold hover:text-white transition-all duration-300 text-xs uppercase tracking-wider shadow-sm">
-            Solicitar Proposta
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-          </a>
         </div>
 
-        <!-- Card 3: Doenças Crônicas -->
-        <div class="carousel-card w-[310px] sm:w-[350px] md:w-[370px] flex-shrink-0 snap-start bg-white rounded-2xl border border-slate-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-xl hover:border-brand-gold/50 p-7 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-6">
-              <div class="w-14 h-14 rounded-xl bg-brand-gold/15 flex items-center justify-center text-brand-gold">
-                <i data-lucide="stethoscope" class="w-7 h-7"></i>
+        <!-- Card 3 -->
+        <div class="card-3d absolute top-0 left-1/2 w-[280px] md:w-[320px] h-full rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200 flex flex-col justify-center p-6" style="transform-style: preserve-3d;">
+          <div class="relative z-20 w-full text-center flex flex-col items-center">
+            <i data-lucide="stethoscope" class="w-12 h-12 text-brand-gold mb-4 card-icon transition-transform duration-500"></i>
+            <h3 class="text-xl md:text-2xl font-bold text-brand-navy mb-2 transition-all duration-500">Doenças Crônicas</h3>
+            <div class="card-details overflow-hidden transition-all duration-500 opacity-0 max-h-0 w-full text-left mt-4 border-t border-slate-100 pt-4">
+              <p class="text-slate-600 text-xs mb-3 font-medium">Manejo atualizado de HAS, DM, DPOC, asma e dislipidemias.</p>
+              
+              <div class="mb-3">
+                <div class="flex items-center gap-1 mb-1">
+                  <i data-lucide="clock" class="w-3 h-3 text-brand-gold"></i>
+                  <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Carga Horária</span>
+                </div>
+                <div class="flex flex-wrap gap-1">
+                  <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">4h</span>
+                  <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">8h</span>
+                  <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">12h</span>
+                  <span class="text-[10px] bg-brand-navy/5 text-brand-navy font-bold px-2 py-0.5 rounded-full">16h</span>
+                </div>
               </div>
-              <span class="text-[11px] font-bold uppercase tracking-wider text-brand-navy/60 bg-slate-100 px-2.5 py-1 rounded-full">Clínica Geral</span>
-            </div>
-
-            <h3 class="text-xl md:text-2xl font-bold text-brand-navy mb-3">Doenças Crônicas</h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">Manejo atualizado e individualizado de HAS, Diabetes, DPOC, asma e dislipidemias.</p>
-
-            <!-- Carga Horária -->
-            <div class="mb-5 pb-5 border-b border-slate-100">
-              <div class="flex items-center gap-1.5 mb-2">
-                <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-gold"></i>
-                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Cargas Horárias Disponíveis</span>
+            
+              <div class="mb-4">
+                <div class="flex items-center gap-1 mb-1">
+                  <i data-lucide="book-open" class="w-3 h-3 text-brand-gold"></i>
+                  <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Material Exclusivo</span>
+                </div>
+                <ul class="text-[11px] text-slate-600 space-y-0.5 pl-4 list-disc marker:text-brand-gold">
+                  <li>Guia de Medicações das Doenças Crônicas</li>
+                  <li>Protocolo para Diagnóstico Precoce</li>
+                  <li>Fluxogramas de Acompanhamento</li>
+                </ul>
               </div>
-              <div class="flex flex-wrap gap-1.5">
-                <span class="text-xs bg-slate-100 text-slate-700 font-medium px-2.5 py-1 rounded-md">4h</span>
-                <span class="text-xs bg-slate-100 text-slate-700 font-medium px-2.5 py-1 rounded-md">8h</span>
-                <span class="text-xs bg-slate-100 text-slate-700 font-medium px-2.5 py-1 rounded-md">12h</span>
-                <span class="text-xs bg-brand-navy/10 text-brand-navy font-bold px-2.5 py-1 rounded-md">16h</span>
-              </div>
-            </div>
-
-            <!-- Material Exclusivo -->
-            <div class="mb-6">
-              <div class="flex items-center gap-1.5 mb-2">
-                <i data-lucide="book-open" class="w-3.5 h-3.5 text-brand-gold"></i>
-                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Material Exclusivo</span>
-              </div>
-              <ul class="text-xs text-slate-600 space-y-1.5 pl-4 list-disc marker:text-brand-gold">
-                <li>Guia Terapêutico de Doenças Crônicas</li>
-                <li>Protocolo para Diagnóstico Precoce</li>
-                <li>Fluxogramas práticos de acompanhamento</li>
-              </ul>
+            
+              <a href="#contato" class="inline-flex w-full justify-center items-center px-4 py-2 bg-brand-navy text-white rounded-lg font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider">Solicitar Proposta</a>
             </div>
           </div>
-
-          <a href="#contato" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold hover:text-white transition-all duration-300 text-xs uppercase tracking-wider shadow-sm">
-            Solicitar Proposta
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-          </a>
         </div>
 
-        <!-- Card 4: Saúde Mental -->
-        <div class="carousel-card w-[310px] sm:w-[350px] md:w-[370px] flex-shrink-0 snap-start bg-white rounded-2xl border border-slate-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-xl hover:border-brand-gold/50 p-7 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-6">
-              <div class="w-14 h-14 rounded-xl bg-brand-gold/15 flex items-center justify-center text-brand-gold">
-                <i data-lucide="brain-circuit" class="w-7 h-7"></i>
+        <!-- Card 4 -->
+        <div class="card-3d absolute top-0 left-1/2 w-[280px] md:w-[320px] h-full rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200 flex flex-col justify-center p-6" style="transform-style: preserve-3d;">
+          <div class="relative z-20 w-full text-center flex flex-col items-center">
+            <i data-lucide="brain-circuit" class="w-12 h-12 text-brand-gold mb-4 card-icon transition-transform duration-500"></i>
+            <h3 class="text-xl md:text-2xl font-bold text-brand-navy mb-2 transition-all duration-500">Saúde Mental</h3>
+            <div class="card-details overflow-hidden transition-all duration-500 opacity-0 max-h-0 w-full text-left mt-4 border-t border-slate-100 pt-4">
+              <p class="text-slate-600 text-xs mb-3 font-medium">Ansiedade, depressão, insônia e psicofármacos.</p>
+              
+              <div class="mb-3">
+                <div class="flex items-center gap-1 mb-1">
+                  <i data-lucide="clock" class="w-3 h-3 text-brand-gold"></i>
+                  <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Carga Horária</span>
+                </div>
+                <div class="flex flex-wrap gap-1">
+                  <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">4h</span>
+                  <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">8h</span>
+                  <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">12h</span>
+                  <span class="text-[10px] bg-brand-navy/5 text-brand-navy font-bold px-2 py-0.5 rounded-full">16h</span>
+                </div>
               </div>
-              <span class="text-[11px] font-bold uppercase tracking-wider text-brand-navy/60 bg-slate-100 px-2.5 py-1 rounded-full">Saúde Mental</span>
-            </div>
-
-            <h3 class="text-xl md:text-2xl font-bold text-brand-navy mb-3">Saúde Mental na APS</h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">Abordagem de ansiedade, depressão, insônia e prescrição segura e consciente de psicofármacos.</p>
-
-            <!-- Carga Horária -->
-            <div class="mb-5 pb-5 border-b border-slate-100">
-              <div class="flex items-center gap-1.5 mb-2">
-                <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-gold"></i>
-                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Cargas Horárias Disponíveis</span>
+            
+              <div class="mb-4">
+                <div class="flex items-center gap-1 mb-1">
+                  <i data-lucide="book-open" class="w-3 h-3 text-brand-gold"></i>
+                  <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Material Exclusivo</span>
+                </div>
+                <ul class="text-[11px] text-slate-600 space-y-0.5 pl-4 list-disc marker:text-brand-gold">
+                  <li>Guia de Medicações em Saúde Mental</li>
+                  <li>Protocolos Práticos de Manejo na APS</li>
+                  <li>Casos clínicos e Ferramentas de Avaliação</li>
+                </ul>
               </div>
-              <div class="flex flex-wrap gap-1.5">
-                <span class="text-xs bg-slate-100 text-slate-700 font-medium px-2.5 py-1 rounded-md">4h</span>
-                <span class="text-xs bg-slate-100 text-slate-700 font-medium px-2.5 py-1 rounded-md">8h</span>
-                <span class="text-xs bg-slate-100 text-slate-700 font-medium px-2.5 py-1 rounded-md">12h</span>
-                <span class="text-xs bg-brand-navy/10 text-brand-navy font-bold px-2.5 py-1 rounded-md">16h</span>
-              </div>
-            </div>
-
-            <!-- Material Exclusivo -->
-            <div class="mb-6">
-              <div class="flex items-center gap-1.5 mb-2">
-                <i data-lucide="book-open" class="w-3.5 h-3.5 text-brand-gold"></i>
-                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Material Exclusivo</span>
-              </div>
-              <ul class="text-xs text-slate-600 space-y-1.5 pl-4 list-disc marker:text-brand-gold">
-                <li>Guia de Medicações em Saúde Mental</li>
-                <li>Protocolos Práticos de Manejo na APS</li>
-                <li>Escalas de rastreio e ferramentas de avaliação</li>
-              </ul>
+            
+              <a href="#contato" class="inline-flex w-full justify-center items-center px-4 py-2 bg-brand-navy text-white rounded-lg font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider">Solicitar Proposta</a>
             </div>
           </div>
-
-          <a href="#contato" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold hover:text-white transition-all duration-300 text-xs uppercase tracking-wider shadow-sm">
-            Solicitar Proposta
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-          </a>
         </div>
 
-        <!-- Card 5: Mulher e Criança -->
-        <div class="carousel-card w-[310px] sm:w-[350px] md:w-[370px] flex-shrink-0 snap-start bg-white rounded-2xl border border-slate-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-xl hover:border-brand-gold/50 p-7 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-6">
-              <div class="w-14 h-14 rounded-xl bg-brand-gold/15 flex items-center justify-center text-brand-gold">
-                <i data-lucide="baby" class="w-7 h-7"></i>
+        <!-- Card 5 -->
+        <div class="card-3d absolute top-0 left-1/2 w-[280px] md:w-[320px] h-full rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200 flex flex-col justify-center p-6" style="transform-style: preserve-3d;">
+          <div class="relative z-20 w-full text-center flex flex-col items-center">
+            <i data-lucide="baby" class="w-12 h-12 text-brand-gold mb-4 card-icon transition-transform duration-500"></i>
+            <h3 class="text-xl md:text-2xl font-bold text-brand-navy mb-2 transition-all duration-500">Mulher e Criança</h3>
+            <div class="card-details overflow-hidden transition-all duration-500 opacity-0 max-h-0 w-full text-left mt-4 border-t border-slate-100 pt-4">
+              <p class="text-slate-600 text-xs mb-3 font-medium">Pré-natal, puerpério e principais condições na infância.</p>
+              
+              <div class="mb-3">
+                <div class="flex items-center gap-1 mb-1">
+                  <i data-lucide="clock" class="w-3 h-3 text-brand-gold"></i>
+                  <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Carga Horária</span>
+                </div>
+                <div class="flex flex-wrap gap-1">
+                  <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">4h</span>
+                  <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">8h</span>
+                  <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">12h</span>
+                  <span class="text-[10px] bg-brand-navy/5 text-brand-navy font-bold px-2 py-0.5 rounded-full">16h</span>
+                </div>
               </div>
-              <span class="text-[11px] font-bold uppercase tracking-wider text-brand-navy/60 bg-slate-100 px-2.5 py-1 rounded-full">Materno-Infantil</span>
-            </div>
-
-            <h3 class="text-xl md:text-2xl font-bold text-brand-navy mb-3">Mulher e Criança</h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">Atenção no pré-natal de baixo e alto risco, puerpério, puericultura e intercorrências infantis.</p>
-
-            <!-- Carga Horária -->
-            <div class="mb-5 pb-5 border-b border-slate-100">
-              <div class="flex items-center gap-1.5 mb-2">
-                <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-gold"></i>
-                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Cargas Horárias Disponíveis</span>
+            
+              <div class="mb-4">
+                <div class="flex items-center gap-1 mb-1">
+                  <i data-lucide="book-open" class="w-3 h-3 text-brand-gold"></i>
+                  <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Material Exclusivo</span>
+                </div>
+                <ul class="text-[11px] text-slate-600 space-y-0.5 pl-4 list-disc marker:text-brand-gold">
+                  <li>Guia MEDIVA da Mulher e da Criança</li>
+                  <li>Checklists e Fluxos de Acompanhamento</li>
+                  <li>Calendários de Atenção Atualizados</li>
+                </ul>
               </div>
-              <div class="flex flex-wrap gap-1.5">
-                <span class="text-xs bg-slate-100 text-slate-700 font-medium px-2.5 py-1 rounded-md">4h</span>
-                <span class="text-xs bg-slate-100 text-slate-700 font-medium px-2.5 py-1 rounded-md">8h</span>
-                <span class="text-xs bg-slate-100 text-slate-700 font-medium px-2.5 py-1 rounded-md">12h</span>
-                <span class="text-xs bg-brand-navy/10 text-brand-navy font-bold px-2.5 py-1 rounded-md">16h</span>
-              </div>
-            </div>
-
-            <!-- Material Exclusivo -->
-            <div class="mb-6">
-              <div class="flex items-center gap-1.5 mb-2">
-                <i data-lucide="book-open" class="w-3.5 h-3.5 text-brand-gold"></i>
-                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Material Exclusivo</span>
-              </div>
-              <ul class="text-xs text-slate-600 space-y-1.5 pl-4 list-disc marker:text-brand-gold">
-                <li>Guia MEDIVA da Mulher e da Criança</li>
-                <li>Checklists e Fluxos de Acompanhamento</li>
-                <li>Calendários de atenção e exames atualizados</li>
-              </ul>
+            
+              <a href="#contato" class="inline-flex w-full justify-center items-center px-4 py-2 bg-brand-navy text-white rounded-lg font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider">Solicitar Proposta</a>
             </div>
           </div>
-
-          <a href="#contato" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold hover:text-white transition-all duration-300 text-xs uppercase tracking-wider shadow-sm">
-            Solicitar Proposta
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-          </a>
         </div>
 
-        <!-- Card 6: TEA, TDAH e TOD -->
-        <div class="carousel-card w-[310px] sm:w-[350px] md:w-[370px] flex-shrink-0 snap-start bg-white rounded-2xl border border-slate-200/90 shadow-[0_4px_20px_rgba(0,0,0,0.04)] hover:shadow-xl hover:border-brand-gold/50 p-7 flex flex-col justify-between">
-          <div>
-            <div class="flex items-center justify-between mb-6">
-              <div class="w-14 h-14 rounded-xl bg-brand-gold/15 flex items-center justify-center text-brand-gold">
-                <i data-lucide="puzzle" class="w-7 h-7"></i>
+        <!-- Card 6 -->
+        <div class="card-3d absolute top-0 left-1/2 w-[280px] md:w-[320px] h-full rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200 flex flex-col justify-center p-6" style="transform-style: preserve-3d;">
+          <div class="relative z-20 w-full text-center flex flex-col items-center">
+            <i data-lucide="puzzle" class="w-12 h-12 text-brand-gold mb-4 card-icon transition-transform duration-500"></i>
+            <h3 class="text-xl md:text-2xl font-bold text-brand-navy mb-2 transition-all duration-500">TEA, TDAH e TOD</h3>
+            <div class="card-details overflow-hidden transition-all duration-500 opacity-0 max-h-0 w-full text-left mt-4 border-t border-slate-100 pt-4">
+              <p class="text-slate-600 text-xs mb-3 font-medium">Equipes para diagnóstico e manejo responsável.</p>
+              
+              <div class="mb-3">
+                <div class="flex items-center gap-1 mb-1">
+                  <i data-lucide="clock" class="w-3 h-3 text-brand-gold"></i>
+                  <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Carga Horária</span>
+                </div>
+                <div class="flex flex-wrap gap-1">
+                  <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">4h</span>
+                  <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">8h</span>
+                  <span class="text-[10px] bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">12h</span>
+                  <span class="text-[10px] bg-brand-navy/5 text-brand-navy font-bold px-2 py-0.5 rounded-full">16h</span>
+                </div>
               </div>
-              <span class="text-[11px] font-bold uppercase tracking-wider text-brand-navy/60 bg-slate-100 px-2.5 py-1 rounded-full">Neurodesenvolvimento</span>
-            </div>
-
-            <h3 class="text-xl md:text-2xl font-bold text-brand-navy mb-3">TEA, TDAH e TOD</h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">Capacitação para identificação precoce, critérios diagnósticos e fluxo responsável de encaminhamento.</p>
-
-            <!-- Carga Horária -->
-            <div class="mb-5 pb-5 border-b border-slate-100">
-              <div class="flex items-center gap-1.5 mb-2">
-                <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-gold"></i>
-                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Cargas Horárias Disponíveis</span>
+            
+              <div class="mb-4">
+                <div class="flex items-center gap-1 mb-1">
+                  <i data-lucide="book-open" class="w-3 h-3 text-brand-gold"></i>
+                  <span class="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Material Exclusivo</span>
+                </div>
+                <ul class="text-[11px] text-slate-600 space-y-0.5 pl-4 list-disc marker:text-brand-gold">
+                  <li>Guia de Sinais de Alerta e Rastreio</li>
+                  <li>Critérios Diagnósticos e Diagnóstico Diferencial</li>
+                  <li>Fluxo do Tocantins e Protocolo de Encaminhamento</li>
+                </ul>
               </div>
-              <div class="flex flex-wrap gap-1.5">
-                <span class="text-xs bg-slate-100 text-slate-700 font-medium px-2.5 py-1 rounded-md">4h</span>
-                <span class="text-xs bg-slate-100 text-slate-700 font-medium px-2.5 py-1 rounded-md">8h</span>
-                <span class="text-xs bg-slate-100 text-slate-700 font-medium px-2.5 py-1 rounded-md">12h</span>
-                <span class="text-xs bg-brand-navy/10 text-brand-navy font-bold px-2.5 py-1 rounded-md">16h</span>
-              </div>
-            </div>
-
-            <!-- Material Exclusivo -->
-            <div class="mb-6">
-              <div class="flex items-center gap-1.5 mb-2">
-                <i data-lucide="book-open" class="w-3.5 h-3.5 text-brand-gold"></i>
-                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Material Exclusivo</span>
-              </div>
-              <ul class="text-xs text-slate-600 space-y-1.5 pl-4 list-disc marker:text-brand-gold">
-                <li>Guia de Sinais de Alerta e Rastreio na Infância</li>
-                <li>Critérios Diagnósticos e Diagnóstico Diferencial</li>
-                <li>Fluxo Regional e Protocolo de Encaminhamento</li>
-              </ul>
+            
+              <a href="#contato" class="inline-flex w-full justify-center items-center px-4 py-2 bg-brand-navy text-white rounded-lg font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider">Solicitar Proposta</a>
             </div>
           </div>
-
-          <a href="#contato" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold hover:text-white transition-all duration-300 text-xs uppercase tracking-wider shadow-sm">
-            Solicitar Proposta
-            <i data-lucide="arrow-right" class="w-4 h-4"></i>
-          </a>
         </div>
 
       </div>
-
-      <!-- Carousel Pagination Dots -->
-      <div id="carousel-dots" class="flex items-center justify-center gap-2 mt-8">
-        <button class="w-2.5 h-2.5 rounded-full bg-brand-gold transition-all duration-300" data-index="0" aria-label="Slide 1"></button>
-        <button class="w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all duration-300" data-index="1" aria-label="Slide 2"></button>
-        <button class="w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all duration-300" data-index="2" aria-label="Slide 3"></button>
-        <button class="w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all duration-300" data-index="3" aria-label="Slide 4"></button>
-        <button class="w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all duration-300" data-index="4" aria-label="Slide 5"></button>
-        <button class="w-2.5 h-2.5 rounded-full bg-slate-300 hover:bg-slate-400 transition-all duration-300" data-index="5" aria-label="Slide 6"></button>
-      </div>
-
     </div>
   </section>
 
