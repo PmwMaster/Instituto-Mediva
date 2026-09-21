@@ -57,6 +57,28 @@ document.querySelectorAll('#mobile-menu a').forEach(link => {
   });
 });
 
+// Smooth scroll for all internal anchor links using Lenis
+document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+  anchor.addEventListener('click', (e) => {
+    const href = anchor.getAttribute('href');
+    if (!href || href === '#') return;
+
+    if (href === '#inicio') {
+      e.preventDefault();
+      e.stopPropagation();
+      lenis.scrollTo(0, { duration: 1.2 });
+      return;
+    }
+
+    const targetEl = document.querySelector(href);
+    if (targetEl) {
+      e.preventDefault();
+      e.stopPropagation();
+      lenis.scrollTo(targetEl, { offset: -20, duration: 1.2 });
+    }
+  });
+});
+
 // Smart Header scroll effect
 const header = document.getElementById('main-header');
 let lastScrollY = window.scrollY;
@@ -208,7 +230,11 @@ window.addEventListener('DOMContentLoaded', () => {
     });
 
     cards3D.forEach((card, i) => {
-      card.addEventListener('click', () => {
+      card.addEventListener('click', (e) => {
+        // Don't hijack clicks on buttons or links (e.g. "Solicitar Proposta")
+        if (e.target.closest('a') || e.target.closest('button')) {
+          return;
+        }
         if (st && st.start !== undefined) {
           const targetScroll = st.start + (i * scrollPerCard);
           lenis.scrollTo(targetScroll, { duration: 1.2 });

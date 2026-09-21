@@ -59,6 +59,7 @@
   .card-3d.active {
     box-shadow: 0 20px 50px -10px rgba(197, 179, 88, 0.4);
     border-color: rgba(197, 179, 88, 0.6);
+    z-index: 30;
   }
   
   .card-3d.active .card-overlay {
@@ -67,7 +68,15 @@
   
   .card-3d.active .card-details {
     opacity: 1;
-    max-height: 400px; /* Expands to reveal content */
+    max-height: 500px; /* Expands to reveal content */
+    pointer-events: auto;
+  }
+  
+  .card-3d.active a {
+    pointer-events: auto;
+    cursor: pointer;
+    position: relative;
+    z-index: 40;
   }
   
   .card-3d.active .card-icon {
