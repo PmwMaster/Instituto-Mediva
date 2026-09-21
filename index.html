@@ -160,28 +160,23 @@
     </div>
   </section>
 
-  <!-- Programas (3D Coverflow Carousel) -->
-  <section id="programas" class="bg-brand-white overflow-hidden relative h-screen w-full flex flex-col items-center justify-center">
-    
-    <!-- Pinned Header Title -->
-    <div class="absolute top-24 left-0 w-full z-20 px-6 md:px-12 text-center pointer-events-none">
-      <h2 class="text-3xl md:text-5xl font-extrabold text-brand-navy mb-4">Nossos Programas<br/><span class="text-brand-gold font-light italic">de Capacitação</span></h2>
+  <!-- Programas -->
+  <section id="programas" class="bg-brand-white relative section-padding" aria-labelledby="programas-title">
+    <div class="container-custom text-center mb-10 md:mb-14">
+      <h2 id="programas-title" class="text-3xl md:text-5xl font-extrabold text-brand-navy mb-4">Nossos Programas<br/><span class="text-brand-gold font-light italic">de Capacitação</span></h2>
     </div>
 
-    <!-- 3D Carousel Perspective Container -->
-    <div class="carousel-viewport w-full h-[460px] md:h-[500px] mt-24 relative" style="perspective: 1200px;">
-      
-      <!-- 3D Wrapper that rotates -->
-      <div class="carousel-3d absolute inset-0 w-full h-full flex justify-center" style="transform-style: preserve-3d;">
-        
+    <div class="program-carousel" role="region" aria-roledescription="carrossel" aria-labelledby="programas-title">
+      <div class="program-viewport">
+        <div id="program-track" class="program-track">
         <!-- Card 1 -->
-        <div class="card-3d absolute top-0 left-1/2 w-[280px] md:w-[320px] h-full rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200 flex flex-col justify-center p-6" style="transform-style: preserve-3d;">
+        <div class="program-card rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200 flex flex-col justify-center p-6">
           <div class="relative z-20 w-full text-center flex flex-col items-center">
             <i data-lucide="heart-pulse" class="w-12 h-12 text-brand-gold mb-4 card-icon transition-transform duration-500"></i>
             <h3 class="text-xl md:text-2xl font-bold text-brand-navy mb-2 transition-all duration-500">Atenção Primária</h3>
             
-            <!-- Hidden details -->
-            <div class="card-details overflow-hidden transition-all duration-500 opacity-0 max-h-0 w-full text-left mt-4 border-t border-slate-100 pt-4">
+            <!-- Program details -->
+            <div class="card-details w-full text-left mt-4 border-t border-slate-100 pt-4">
               <p class="text-slate-600 text-xs mb-3 font-medium">Abordagem integral, prevenção e promoção da saúde.</p>
               
               <div class="mb-3">
@@ -215,11 +210,11 @@
         </div>
 
         <!-- Card 2 -->
-        <div class="card-3d absolute top-0 left-1/2 w-[280px] md:w-[320px] h-full rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200 flex flex-col justify-center p-6" style="transform-style: preserve-3d;">
+        <div class="program-card rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200 flex flex-col justify-center p-6">
           <div class="relative z-20 w-full text-center flex flex-col items-center">
             <i data-lucide="activity" class="w-12 h-12 text-brand-gold mb-4 card-icon transition-transform duration-500"></i>
             <h3 class="text-xl md:text-2xl font-bold text-brand-navy mb-2 transition-all duration-500">Urgências na APS</h3>
-            <div class="card-details overflow-hidden transition-all duration-500 opacity-0 max-h-0 w-full text-left mt-4 border-t border-slate-100 pt-4">
+            <div class="card-details w-full text-left mt-4 border-t border-slate-100 pt-4">
               <p class="text-slate-600 text-xs mb-3 font-medium">Reconhecimento rápido, estabilização e condutas seguras.</p>
               
               <div class="mb-3">
@@ -253,11 +248,11 @@
         </div>
 
         <!-- Card 3 -->
-        <div class="card-3d absolute top-0 left-1/2 w-[280px] md:w-[320px] h-full rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200 flex flex-col justify-center p-6" style="transform-style: preserve-3d;">
+        <div class="program-card rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200 flex flex-col justify-center p-6">
           <div class="relative z-20 w-full text-center flex flex-col items-center">
             <i data-lucide="stethoscope" class="w-12 h-12 text-brand-gold mb-4 card-icon transition-transform duration-500"></i>
             <h3 class="text-xl md:text-2xl font-bold text-brand-navy mb-2 transition-all duration-500">Doenças Crônicas</h3>
-            <div class="card-details overflow-hidden transition-all duration-500 opacity-0 max-h-0 w-full text-left mt-4 border-t border-slate-100 pt-4">
+            <div class="card-details w-full text-left mt-4 border-t border-slate-100 pt-4">
               <p class="text-slate-600 text-xs mb-3 font-medium">Manejo atualizado de HAS, DM, DPOC, asma e dislipidemias.</p>
               
               <div class="mb-3">
@@ -291,11 +286,11 @@
         </div>
 
         <!-- Card 4 -->
-        <div class="card-3d absolute top-0 left-1/2 w-[280px] md:w-[320px] h-full rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200 flex flex-col justify-center p-6" style="transform-style: preserve-3d;">
+        <div class="program-card rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200 flex flex-col justify-center p-6">
           <div class="relative z-20 w-full text-center flex flex-col items-center">
             <i data-lucide="brain-circuit" class="w-12 h-12 text-brand-gold mb-4 card-icon transition-transform duration-500"></i>
             <h3 class="text-xl md:text-2xl font-bold text-brand-navy mb-2 transition-all duration-500">Saúde Mental</h3>
-            <div class="card-details overflow-hidden transition-all duration-500 opacity-0 max-h-0 w-full text-left mt-4 border-t border-slate-100 pt-4">
+            <div class="card-details w-full text-left mt-4 border-t border-slate-100 pt-4">
               <p class="text-slate-600 text-xs mb-3 font-medium">Ansiedade, depressão, insônia e psicofármacos.</p>
               
               <div class="mb-3">
@@ -329,11 +324,11 @@
         </div>
 
         <!-- Card 5 -->
-        <div class="card-3d absolute top-0 left-1/2 w-[280px] md:w-[320px] h-full rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200 flex flex-col justify-center p-6" style="transform-style: preserve-3d;">
+        <div class="program-card rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200 flex flex-col justify-center p-6">
           <div class="relative z-20 w-full text-center flex flex-col items-center">
             <i data-lucide="baby" class="w-12 h-12 text-brand-gold mb-4 card-icon transition-transform duration-500"></i>
             <h3 class="text-xl md:text-2xl font-bold text-brand-navy mb-2 transition-all duration-500">Mulher e Criança</h3>
-            <div class="card-details overflow-hidden transition-all duration-500 opacity-0 max-h-0 w-full text-left mt-4 border-t border-slate-100 pt-4">
+            <div class="card-details w-full text-left mt-4 border-t border-slate-100 pt-4">
               <p class="text-slate-600 text-xs mb-3 font-medium">Pré-natal, puerpério e principais condições na infância.</p>
               
               <div class="mb-3">
@@ -367,11 +362,11 @@
         </div>
 
         <!-- Card 6 -->
-        <div class="card-3d absolute top-0 left-1/2 w-[280px] md:w-[320px] h-full rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200 flex flex-col justify-center p-6" style="transform-style: preserve-3d;">
+        <div class="program-card rounded-2xl shadow-lg overflow-hidden bg-white border border-slate-200 flex flex-col justify-center p-6">
           <div class="relative z-20 w-full text-center flex flex-col items-center">
             <i data-lucide="puzzle" class="w-12 h-12 text-brand-gold mb-4 card-icon transition-transform duration-500"></i>
             <h3 class="text-xl md:text-2xl font-bold text-brand-navy mb-2 transition-all duration-500">TEA, TDAH e TOD</h3>
-            <div class="card-details overflow-hidden transition-all duration-500 opacity-0 max-h-0 w-full text-left mt-4 border-t border-slate-100 pt-4">
+            <div class="card-details w-full text-left mt-4 border-t border-slate-100 pt-4">
               <p class="text-slate-600 text-xs mb-3 font-medium">Equipes para diagnóstico e manejo responsável.</p>
               
               <div class="mb-3">
@@ -404,7 +399,13 @@
           </div>
         </div>
 
+        </div>
       </div>
+      <div class="program-controls">
+        <span class="program-counter" aria-hidden="true"><span data-program-current>01</span><span class="text-slate-300 mx-3">/</span><span data-program-total>06</span></span>
+      </div>
+      <p class="text-center text-xs text-slate-500 mt-3">Clique em um card para explorar o programa.</p>
+      <p class="sr-only" data-program-status role="status" aria-live="polite" aria-atomic="true"></p>
     </div>
   </section>
 
