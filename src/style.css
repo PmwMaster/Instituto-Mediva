@@ -51,8 +51,12 @@
 }
 
 .program-carousel {
-  --program-width: min(280px, calc(100vw - 48px));
+  --program-width: min(290px, calc(100vw - 44px));
   margin-inline: auto;
+  position: relative;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .program-viewport {
@@ -60,11 +64,17 @@
   height: 520px;
   perspective: 1200px;
   overflow: hidden;
+  cursor: grab;
+  touch-action: pan-y;
+}
+
+.program-viewport.is-dragging {
+  cursor: grabbing;
 }
 
 .program-track {
   position: absolute;
-  inset: 24px 0 36px;
+  inset: 16px 0 32px;
   transform-style: preserve-3d;
   pointer-events: none;
 }
@@ -80,13 +90,16 @@
   border-color: #cbd5e1;
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
-  transition: box-shadow 0.5s ease, border-color 0.5s ease;
+  transition: box-shadow 0.4s ease, border-color 0.4s ease, background-color 0.4s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .program-card.is-active {
-  background-color: white;
+  background-color: #ffffff;
   border-color: #c5b358;
-  box-shadow: 0 16px 32px -16px rgb(197 179 88 / 40%);
+  box-shadow: 0 20px 40px -15px rgba(197, 179, 88, 0.45);
 }
 
 .program-card.is-active h3 {
@@ -99,7 +112,7 @@
   }
 
   .program-viewport {
-    height: 560px;
+    height: 540px;
   }
 }
 
@@ -107,7 +120,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
+  gap: 16px;
 }
 
 .program-select {
@@ -118,14 +131,20 @@
   cursor: pointer;
 }
 
-.program-card > div {
+/* On the active card, the select button must not block interactive elements or links */
+.program-card.is-active .program-select {
   pointer-events: none;
+}
+
+.program-card > div {
+  pointer-events: auto;
 }
 
 .program-card a {
   position: relative;
-  z-index: 40;
+  z-index: 50;
   pointer-events: auto;
+  cursor: pointer;
 }
 
 .program-card:has(:focus-visible) {
@@ -144,8 +163,8 @@
 
 .program-counter {
   color: #0f172a;
-  font-size: 14px;
-  font-weight: 600;
+  font-size: 15px;
+  font-weight: 700;
   font-variant-numeric: tabular-nums;
 }
 
