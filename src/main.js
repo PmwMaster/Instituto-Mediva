@@ -44,17 +44,36 @@ gs.ticker.lagSmoothing(0)
 const mobileMenuBtn = document.getElementById('mobile-menu-btn');
 const mobileMenu = document.getElementById('mobile-menu');
 
+function setMobileMenuOpen(isOpen, restoreFocus = false) {
+  if (!mobileMenuBtn || !mobileMenu) return;
+
+  mobileMenu.classList.toggle('hidden', !isOpen);
+  mobileMenu.classList.toggle('flex', isOpen);
+  mobileMenuBtn.setAttribute('aria-expanded', String(isOpen));
+  mobileMenuBtn.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
+
+  if (restoreFocus) mobileMenuBtn.focus();
+}
+
 mobileMenuBtn?.addEventListener('click', () => {
-  mobileMenu?.classList.toggle('hidden');
-  mobileMenu?.classList.toggle('flex');
+  setMobileMenuOpen(mobileMenuBtn.getAttribute('aria-expanded') !== 'true');
 });
 
 // Close mobile menu on click link
 document.querySelectorAll('#mobile-menu a').forEach(link => {
   link.addEventListener('click', () => {
-    mobileMenu?.classList.add('hidden');
-    mobileMenu?.classList.remove('flex');
+    setMobileMenuOpen(false);
   });
+});
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && mobileMenuBtn?.getAttribute('aria-expanded') === 'true') {
+    setMobileMenuOpen(false, true);
+  }
+});
+
+window.matchMedia('(min-width: 1024px)').addEventListener('change', (event) => {
+  if (event.matches) setMobileMenuOpen(false);
 });
 
 // Smooth scroll for all internal anchor links using Lenis
