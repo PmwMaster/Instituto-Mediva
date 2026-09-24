@@ -34,7 +34,7 @@ export function initProgramCarousel() {
         x: Math.sin(radians) * radius,
         z: (Math.cos(radians) - 1) * radius,
         rotationY: 0,
-        autoAlpha: (1 - 0.08 * distance) * visibility,
+        autoAlpha: (1 - 0.35 * distance) * visibility,
         scale: 1 - 0.06 * distance,
         zIndex: Math.round(100 - Math.abs(angle))
       });

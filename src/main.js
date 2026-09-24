@@ -125,6 +125,23 @@ window.addEventListener('scroll', () => {
   lastScrollY = currentScrollY;
 });
 
+const floatingWhatsApp = document.querySelector('a.fixed[href^="https://wa.me/"]');
+const contactSection = document.getElementById('contato');
+const footer = document.querySelector('footer');
+
+if (floatingWhatsApp && contactSection && footer) {
+  const visibleContactAreas = new Set();
+  const contactObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) visibleContactAreas.add(entry.target);
+      else visibleContactAreas.delete(entry.target);
+    });
+    floatingWhatsApp.style.display = visibleContactAreas.size ? 'none' : '';
+  });
+  contactObserver.observe(contactSection);
+  contactObserver.observe(footer);
+}
+
 // Animations (Awwwards Style)
 window.addEventListener('DOMContentLoaded', () => {
 

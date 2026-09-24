@@ -18,7 +18,7 @@
 
 @layer components {
   .btn-primary {
-    @apply inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-gold text-white font-semibold rounded-lg transition-all duration-300 hover:bg-brand-gold-hover hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-gold;
+    @apply inline-flex items-center justify-center gap-2 px-8 py-4 bg-brand-gold text-brand-navy font-semibold rounded-lg transition-all duration-300 hover:bg-brand-gold-hover hover:-translate-y-1 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-gold;
   }
   
   .btn-secondary {
@@ -50,6 +50,44 @@
 
 }
 
+/* Keep the navigation legible over the blue hero, then return to navy on the white header. */
+#main-header.bg-transparent > .container-custom nav a,
+#main-header.bg-transparent > .container-custom .btn-secondary,
+#main-header.bg-transparent #mobile-menu-btn {
+  color: #fff;
+}
+
+#main-header.bg-transparent > .container-custom .btn-secondary {
+  border-color: #fff;
+}
+
+#main-header.bg-transparent > .container-custom .btn-secondary:hover {
+  background-color: #fff;
+  color: #0f172a;
+}
+
+#main-header.bg-transparent > .container-custom nav a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+#main-header.bg-transparent > .container-custom img {
+  filter: brightness(0) invert(1);
+}
+
+/* The brand gold remains an accent; this darker shade is for text on light surfaces. */
+section.bg-brand-white .text-brand-gold,
+section.bg-brand-offwhite .text-brand-gold,
+section.bg-white .text-brand-gold {
+  color: #806b1e;
+}
+
+.program-card a:hover,
+.program-prev:hover,
+.program-next:hover {
+  color: #0f172a;
+}
+
 .program-carousel {
   --program-width: min(290px, calc(100vw - 44px));
   margin-inline: auto;
@@ -61,7 +99,7 @@
 
 .program-viewport {
   position: relative;
-  height: 520px;
+  height: 500px;
   perspective: 1200px;
   overflow: hidden;
   cursor: grab;
@@ -93,7 +131,23 @@
   transition: box-shadow 0.4s ease, border-color 0.4s ease, background-color 0.4s ease;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  padding: 20px;
+}
+
+.program-card .card-details > p {
+  font-size: 0.875rem;
+  line-height: 1.45;
+}
+
+.program-card .card-details span {
+  font-size: 0.75rem;
+}
+
+.program-card .card-details ul,
+.program-card .card-details a {
+  font-size: 0.8125rem;
+  line-height: 1.45;
 }
 
 .program-card.is-active {
@@ -103,7 +157,7 @@
 }
 
 .program-card.is-active h3 {
-  color: #c5b358;
+  color: #806b1e;
 }
 
 @media (min-width: 768px) {
@@ -112,7 +166,11 @@
   }
 
   .program-viewport {
-    height: 540px;
+    height: 510px;
+  }
+
+  .program-card {
+    padding: 24px;
   }
 }
 
@@ -166,6 +224,29 @@
   font-size: 15px;
   font-weight: 700;
   font-variant-numeric: tabular-nums;
+}
+
+.contact-photo {
+  object-position: center 12%;
+}
+
+@media (max-width: 767px) {
+  a.fixed[href^="https://wa.me/"] {
+    bottom: 12px;
+    right: 12px;
+    padding: 12px;
+  }
+
+  a.fixed[href^="https://wa.me/"] svg {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .contact-photo {
+    object-position: center;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
