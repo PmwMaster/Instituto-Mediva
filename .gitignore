@@ -31,4 +31,5 @@ scratch_*
 scratch_pdf/
 redesign.py
 add_back_button.cjs
-
+*.docx
+extract_docx.ps1

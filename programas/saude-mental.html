@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Saúde Mental na APS | Instituto MEDIVA</title>
-  <meta name="description" content="Ansiedade, depressão, insônia e manejo de psicofármacos na Atenção Primária.">
+  <meta name="description" content="Acolher, avaliar, manejar e reconhecer quando é necessário ampliar o cuidado. Capacitação presencial e híbrida para equipes da APS.">
   <link rel="icon" type="image/png" href="/assets/mediva-logo-new.png" />
 </head>
 <body class="bg-brand-white text-brand-text font-sans antialiased">
@@ -12,167 +12,378 @@
   <!-- Header -->
   <header id="main-header" class="fixed w-full top-0 z-50 bg-white/95 backdrop-blur-md shadow-soft py-2 transition-all duration-500">
     <div class="container-custom flex items-center justify-between">
-      <a href="/" class="flex items-center">
+      <a href="/" class="flex items-center" aria-label="Voltar para a página inicial">
         <img src="/assets/mediva-logo-with-text.png" alt="Instituto MEDIVA Logo" class="h-16 md:h-20 w-auto object-contain transition-all duration-300" />
       </a>
-      <nav class="hidden lg:flex items-center gap-8">
-        <a href="/#desafios" class="text-sm font-semibold hover:text-brand-gold transition-colors text-brand-navy">Por que capacitar</a>
+
+      <nav class="hidden lg:flex items-center gap-7">
+        <a href="/#inicio" class="text-sm font-semibold hover:text-brand-gold transition-colors text-brand-navy">Início</a>
+        <a href="/#saude" class="text-sm font-semibold hover:text-brand-gold transition-colors text-brand-navy font-bold text-brand-gold">Saúde</a>
+        <a href="/#educacao" class="text-sm font-semibold hover:text-brand-gold transition-colors text-brand-navy">Educação</a>
         <a href="/#solucoes" class="text-sm font-semibold hover:text-brand-gold transition-colors text-brand-navy">Soluções</a>
-        <a href="/#programas" class="text-sm font-semibold hover:text-brand-gold transition-colors text-brand-navy">Capacitações</a>
         <a href="/#sobre" class="text-sm font-semibold hover:text-brand-gold transition-colors text-brand-navy">Sobre a MEDIVA</a>
       </nav>
+
       <div class="hidden lg:block">
-        <a href="/#contato" class="btn-secondary text-sm px-5 py-2">Fale Conosco</a>
+        <a href="#proposta" class="btn-secondary text-sm px-5 py-2">Solicitar Proposta</a>
       </div>
-      <button id="mobile-menu-btn" type="button" aria-label="Abrir menu" aria-controls="mobile-menu" aria-expanded="false" class="lg:hidden text-brand-navy p-2"><i data-lucide="menu"></i></button>
+
+      <button id="mobile-menu-btn" type="button" aria-label="Abrir menu" aria-controls="mobile-menu" aria-expanded="false" class="lg:hidden text-brand-navy p-2">
+        <i data-lucide="menu"></i>
+      </button>
     </div>
-    <nav id="mobile-menu" aria-label="Navegação mobile" class="hidden absolute top-full left-0 w-full bg-white shadow-xl flex-col py-6 px-6 gap-6 lg:hidden border-t border-gray-100">
-      <a href="/#desafios" class="text-base font-semibold text-brand-navy">Por que capacitar</a>
+
+    <nav id="mobile-menu" aria-label="Navegação mobile" class="hidden absolute top-full left-0 w-full bg-white shadow-xl flex-col py-6 px-6 gap-4 lg:hidden border-t border-gray-100">
+      <a href="/#inicio" class="text-base font-semibold text-brand-navy">Início</a>
+      <a href="/#saude" class="text-base font-semibold text-brand-navy">Capacitações em Saúde</a>
+      <a href="/#educacao" class="text-base font-semibold text-brand-navy">Capacitações em Educação</a>
       <a href="/#solucoes" class="text-base font-semibold text-brand-navy">Soluções</a>
-      <a href="/#programas" class="text-base font-semibold text-brand-navy">Capacitações</a>
       <a href="/#sobre" class="text-base font-semibold text-brand-navy">Sobre a MEDIVA</a>
-      <a href="/#contato" class="btn-secondary w-full text-center mt-2">Fale Conosco</a>
+      <a href="#proposta" class="btn-secondary w-full text-center mt-2">Solicitar Proposta</a>
     </nav>
   </header>
 
   <!-- Hero Interna -->
   <section class="pt-32 pb-16 md:pt-40 md:pb-24 bg-brand-navy relative overflow-hidden">
-    <div class="absolute inset-0 bg-gradient-to-r from-brand-navy to-brand-navy/80"></div>
+    <div class="absolute inset-0 bg-gradient-to-r from-brand-navy via-brand-navy to-slate-900 opacity-95"></div>
+    
     <div class="container-custom relative z-10 text-center max-w-4xl mx-auto">
-      
       <div class="mb-8">
-        <a href="/#programas" class="inline-flex items-center gap-2 text-brand-gold hover:text-white transition-colors text-sm font-bold uppercase tracking-wider">
-          <i data-lucide="arrow-left" class="w-4 h-4"></i> Voltar para os programas
+        <a href="/#saude" class="inline-flex items-center gap-2 text-brand-gold hover:text-white transition-colors text-xs md:text-sm font-bold uppercase tracking-wider">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i> Voltar para Capacitações em Saúde
         </a>
       </div>
       <div class="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-brand-gold/20 text-brand-gold mb-6">
-        <i data-lucide="brain-circuit" class="w-8 h-8"></i>
+        <i data-lucide="brain" class="w-8 h-8"></i>
       </div>
-      <h1 class="text-4xl md:text-5xl font-extrabold text-white mb-6 leading-tight">
+      <span class="inline-block px-3.5 py-1 rounded-full bg-white/10 text-brand-gold text-xs font-bold uppercase tracking-widest mb-4">
+        Área da Saúde · Saúde Mental
+      </span>
+      <h1 class="text-3xl md:text-5xl font-extrabold text-white mb-6 leading-tight tracking-tight">
         Saúde Mental<br/>
-        <em class="font-light italic text-brand-gold">na APS</em>
+        <em class="font-light italic text-brand-gold">na Atenção Primária (APS)</em>
       </h1>
-      <p class="text-lg md:text-xl text-slate-300 leading-relaxed mb-8">
-        Ansiedade, depressão, insônia e psicofármacos com abordagem prática.
+      <p class="text-lg md:text-xl text-slate-200 leading-relaxed mb-8 max-w-2xl mx-auto">
+        Acolher, avaliar, manejar e reconhecer quando é necessário ampliar o cuidado.
       </p>
-      <a href="/#contato" class="btn-primary inline-flex items-center gap-2">Solicitar Proposta para minha equipe</a>
+      <a href="https://wa.me/5567992325513?text=Ol%C3%A1%21%20Gostaria%20de%20uma%20proposta%20para%20a%20capacita%C3%A7%C3%A3o%20em%20Sa%C3%BAde%20Mental%20na%20APS." target="_blank" class="btn-primary inline-flex items-center gap-2">
+        Solicitar proposta para minha equipe
+        <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      </a>
     </div>
   </section>
 
-  <!-- O Cenário -->
+  <!-- O Cenário da APS & 3 Destaques -->
   <section class="section-padding bg-brand-offwhite">
     <div class="container-custom max-w-4xl mx-auto">
-      <div class="text-center mb-12">
-        <span class="inline-block text-brand-gold font-bold uppercase tracking-widest text-sm mb-4">O Cenário da APS</span>
-        <h2 class="text-3xl font-extrabold text-brand-navy mb-6">Acolhimento e resolutividade</h2>
-        <p class="text-slate-600 leading-relaxed text-lg">
-          A demanda por saúde mental nas unidades básicas de saúde cresceu exponencialmente. É fundamental que as equipes médicas estejam preparadas para oferecer um acolhimento inicial adequado, diagnóstico preciso e manejo inicial dos transtornos comuns.
+      <div class="text-center mb-14">
+        <span class="inline-block text-brand-gold font-bold uppercase tracking-widest text-xs mb-3">O Cenário da APS</span>
+        <h2 class="text-3xl font-extrabold text-brand-navy mb-5">Saúde mental também é cuidado longitudinal</h2>
+        <p class="text-slate-600 leading-relaxed text-base md:text-lg">
+          Queixas relacionadas à saúde mental estão presentes na rotina da Atenção Primária e exigem equipes preparadas para acolher, avaliar, manejar situações frequentes e reconhecer os casos que necessitam de cuidado especializado. O vínculo e a longitudinalidade da APS favorecem acompanhamento, revisão terapêutica e articulação com a rede.
         </p>
       </div>
       
+      <!-- 3 Destaques -->
       <div class="grid md:grid-cols-3 gap-6">
-        <div class="glass-card p-6 rounded-2xl border border-white/60 text-center">
-          <div class="w-12 h-12 mx-auto bg-brand-gold/10 rounded-full flex items-center justify-center mb-4 text-brand-gold">
-            <i data-lucide="search"></i>
+        <div class="glass-card p-6 rounded-2xl border border-white/60 text-center flex flex-col items-center">
+          <div class="w-12 h-12 bg-indigo-50 text-indigo-700 rounded-2xl flex items-center justify-center mb-4">
+            <i data-lucide="user-search" class="w-6 h-6"></i>
           </div>
-          <span class="text-slate-700 font-medium">Diagnóstico diferencial de transtornos mentais comuns</span>
+          <h3 class="font-bold text-brand-navy text-base mb-2">Avaliação e Risco</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">Avaliação clínica precisa, diagnóstico diferencial e identificação de sinais de gravidade.</p>
         </div>
-        <div class="glass-card p-6 rounded-2xl border border-white/60 text-center">
-          <div class="w-12 h-12 mx-auto bg-brand-gold/10 rounded-full flex items-center justify-center mb-4 text-brand-gold">
-            <i data-lucide="users"></i>
+        <div class="glass-card p-6 rounded-2xl border border-white/60 text-center flex flex-col items-center">
+          <div class="w-12 h-12 bg-emerald-50 text-emerald-700 rounded-2xl flex items-center justify-center mb-4">
+            <i data-lucide="pill" class="w-6 h-6"></i>
           </div>
-          <span class="text-slate-700 font-medium">Prescrição e desprescrição responsável</span>
+          <h3 class="font-bold text-brand-navy text-base mb-2">Psicofarmacologia Prática</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">Prescrição segura, titulação responsável, desprescrição de benzodiazepínicos e manejo de efeitos.</p>
         </div>
-        <div class="glass-card p-6 rounded-2xl border border-white/60 text-center">
-          <div class="w-12 h-12 mx-auto bg-brand-gold/10 rounded-full flex items-center justify-center mb-4 text-brand-gold">
-            <i data-lucide="shield-check"></i>
+        <div class="glass-card p-6 rounded-2xl border border-white/60 text-center flex flex-col items-center">
+          <div class="w-12 h-12 bg-blue-50 text-blue-700 rounded-2xl flex items-center justify-center mb-4">
+            <i data-lucide="network" class="w-6 h-6"></i>
           </div>
-          <span class="text-slate-700 font-medium">Encaminhamento criterioso para serviços especializados</span>
+          <h3 class="font-bold text-brand-navy text-base mb-2">Rede de Atenção (RAPS)</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">Articulação assertiva com a Rede de Atenção Psicossocial e critérios de encaminhamento.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- O Programa -->
+  <!-- Para quem é & Objetivo -->
+  <section class="py-16 bg-white border-y border-slate-100">
+    <div class="container-custom max-w-4xl mx-auto grid md:grid-cols-2 gap-8">
+      <div class="p-8 rounded-2xl bg-slate-50 border border-slate-200/70">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-800 flex items-center justify-center">
+            <i data-lucide="user-check" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-xl font-bold text-brand-navy">Para quem é</h3>
+        </div>
+        <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+          Médicos e demais profissionais da Atenção Primária envolvidos no acolhimento e acompanhamento de pessoas com demandas de saúde mental, com adequação do conteúdo ao escopo profissional.
+        </p>
+      </div>
+
+      <div class="p-8 rounded-2xl bg-amber-50/50 border border-amber-200/60">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-xl bg-brand-gold/20 text-amber-800 flex items-center justify-center">
+            <i data-lucide="target" class="w-5 h-5"></i>
+          </div>
+          <h3 class="text-xl font-bold text-brand-navy">Objetivo da capacitação</h3>
+        </div>
+        <p class="text-slate-600 leading-relaxed text-sm md:text-base">
+          Fortalecer a abordagem das condições de saúde mental mais frequentes na APS, qualificando a avaliação inicial, o acompanhamento, a segurança terapêutica e os critérios de encaminhamento.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Ementa e Temas Abordados -->
+  <section class="section-padding bg-brand-offwhite">
+    <div class="container-custom max-w-4xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="inline-block text-brand-gold font-bold uppercase tracking-widest text-xs mb-3">O que abordamos</span>
+        <h2 class="text-3xl md:text-4xl font-extrabold text-brand-navy leading-tight">
+          Ementa do <em class="font-light italic text-brand-gold">Programa</em>
+        </h2>
+      </div>
+
+      <div class="bg-white p-8 md:p-10 rounded-3xl border border-slate-200/80 shadow-sm">
+        <h3 class="text-xl font-bold text-brand-navy mb-6 flex items-center gap-2">
+          <i data-lucide="list-checks" class="text-brand-gold w-6 h-6"></i>
+          Temas abordados na capacitação
+        </h3>
+        <ul class="grid md:grid-cols-2 gap-4 text-slate-700 text-sm md:text-base">
+          <li class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+            <i data-lucide="check" class="w-5 h-5 text-brand-gold flex-shrink-0 mt-0.5"></i>
+            <span>Avaliação inicial em saúde mental e diagnóstico diferencial na APS</span>
+          </li>
+          <li class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+            <i data-lucide="check" class="w-5 h-5 text-brand-gold flex-shrink-0 mt-0.5"></i>
+            <span>Depressão e transtornos de ansiedade: reconhecimento, gravidade e acompanhamento</span>
+          </li>
+          <li class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+            <i data-lucide="check" class="w-5 h-5 text-brand-gold flex-shrink-0 mt-0.5"></i>
+            <span>Uso de instrumentos de apoio à avaliação clínica quando indicados</span>
+          </li>
+          <li class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+            <i data-lucide="check" class="w-5 h-5 text-brand-gold flex-shrink-0 mt-0.5"></i>
+            <span>Psicofarmacologia prática: escolha, início, titulação, efeitos adversos, interações e monitoramento</span>
+          </li>
+          <li class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+            <i data-lucide="check" class="w-5 h-5 text-brand-gold flex-shrink-0 mt-0.5"></i>
+            <span>Insônia, uso racional de benzodiazepínicos e princípios de desprescrição</span>
+          </li>
+          <li class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+            <i data-lucide="check" class="w-5 h-5 text-brand-gold flex-shrink-0 mt-0.5"></i>
+            <span>Avaliação do risco de suicídio: abordagem inicial, proteção e fluxos de encaminhamento</span>
+          </li>
+          <li class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+            <i data-lucide="check" class="w-5 h-5 text-brand-gold flex-shrink-0 mt-0.5"></i>
+            <span>Transtorno bipolar: sinais de alerta e diferenciação de depressão unipolar</span>
+          </li>
+          <li class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+            <i data-lucide="check" class="w-5 h-5 text-brand-gold flex-shrink-0 mt-0.5"></i>
+            <span>Psicose, agitação e outras situações que exigem avaliação especializada ou urgente</span>
+          </li>
+          <li class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+            <i data-lucide="check" class="w-5 h-5 text-brand-gold flex-shrink-0 mt-0.5"></i>
+            <span>Uso de álcool e outras substâncias na rotina da APS</span>
+          </li>
+          <li class="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100">
+            <i data-lucide="check" class="w-5 h-5 text-brand-gold flex-shrink-0 mt-0.5"></i>
+            <span>Articulação com a Rede de Atenção Psicossocial e critérios de encaminhamento</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Estrutura Operacional -->
   <section class="section-padding bg-white">
-    <div class="container-custom max-w-4xl">
-      <div class="text-center mb-16">
-        <span class="inline-block text-brand-gold font-bold uppercase tracking-widest text-sm mb-4">O que abordamos</span>
-        <h2 class="text-3xl md:text-4xl font-extrabold text-brand-navy leading-tight">Ementa do<br/><em class="font-light italic text-brand-gold">Programa</em></h2>
+    <div class="container-custom max-w-4xl mx-auto">
+      <div class="text-center mb-14">
+        <span class="inline-block text-brand-gold font-bold uppercase tracking-widest text-xs mb-3">Estrutura Operacional</span>
+        <h2 class="text-3xl font-extrabold text-brand-navy">Como funciona a formação</h2>
       </div>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="glass-card p-8 rounded-2xl border border-slate-100 shadow-sm">
-          <h3 class="text-xl font-bold text-brand-navy mb-4">Temas abordados</h3>
-          <ul class="space-y-3 text-slate-600">
-            <li class="flex items-start gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-gold mt-2"></div> Depressão e Transtorno de Ansiedade Generalizada (TAG)</li>
-            <li class="flex items-start gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-gold mt-2"></div> Manejo de Insônia e uso de Benzodiazepínicos</li>
-            <li class="flex items-start gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-gold mt-2"></div> Psicofarmacologia Básica na APS</li>
-            <li class="flex items-start gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-gold mt-2"></div> Risco de Suicídio: Abordagem e fluxos</li>
-            <li class="flex items-start gap-2"><div class="w-1.5 h-1.5 rounded-full bg-brand-gold mt-2"></div> Transtorno Bipolar (Identificação na APS)</li>
-          </ul>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-brand-gold/15 text-brand-gold flex items-center justify-center">
+              <i data-lucide="lightbulb" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-bold text-brand-navy text-lg">Metodologia Prática</h3>
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Exposição dialogada, discussão de casos clínicos, análise de prescrições e seguimentos, exercícios de avaliação de risco e construção de fluxos de cuidado.
+          </p>
         </div>
-        <div class="space-y-6">
-          <div class="bg-brand-navy/5 p-6 rounded-2xl border border-brand-navy/10">
-            <h4 class="font-bold text-brand-navy mb-2 flex items-center gap-2"><i data-lucide="clock" class="text-brand-gold w-5 h-5"></i> Carga Horária Flexível</h4>
-            <p class="text-sm text-slate-600">Turmas com duração de 4h, 8h, 12h ou 16h.</p>
+
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-blue-100 text-blue-800 flex items-center justify-center">
+              <i data-lucide="laptop" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-bold text-brand-navy text-lg">Formato Híbrido ou Presencial</h3>
           </div>
-          <div class="bg-brand-gold/10 p-6 rounded-2xl border border-brand-gold/20">
-            <h4 class="font-bold text-brand-navy mb-2 flex items-center gap-2"><i data-lucide="book-open" class="text-brand-gold w-5 h-5"></i> Material Exclusivo</h4>
-            <p class="text-sm text-slate-600">Guia de Medicações em Saúde Mental, Ferramentas de Avaliação (PHQ-9, GAD-7).</p>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Presencial ou híbrido, conforme a proposta e as características do conteúdo, adaptando-se às necessidades institucionais.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center">
+              <i data-lucide="clock" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-bold text-brand-navy text-lg">Carga Horária Flexível</h3>
           </div>
+          <div class="flex flex-wrap gap-2 mb-3">
+            <span class="text-xs font-bold bg-white text-brand-navy border border-slate-200 px-3 py-1 rounded-md">4h</span>
+            <span class="text-xs font-bold bg-white text-brand-navy border border-slate-200 px-3 py-1 rounded-md">8h</span>
+            <span class="text-xs font-bold bg-white text-brand-navy border border-slate-200 px-3 py-1 rounded-md">12h</span>
+            <span class="text-xs font-bold bg-brand-navy text-white px-3 py-1 rounded-md">16h</span>
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Turmas com duração de 4h, 8h, 12h ou 16h. A seleção dos temas e o nível de aprofundamento são definidos de acordo com a carga horária contratada, o perfil dos participantes e as necessidades da instituição.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-indigo-100 text-indigo-800 flex items-center justify-center">
+              <i data-lucide="book-open" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-bold text-brand-navy text-lg">Materiais de Apoio</h3>
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Guia MEDIVA de Saúde Mental na APS, roteiros de avaliação e acompanhamento, materiais de psicofarmacologia e fluxos de encaminhamento.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-amber-100 text-amber-800 flex items-center justify-center">
+              <i data-lucide="award" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-bold text-brand-navy text-lg">Certificação</h3>
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            Certificado MEDIVA de participação/conclusão, conforme a carga horária e os critérios definidos para a capacitação.
+          </p>
+        </div>
+
+        <div class="p-6 rounded-2xl bg-slate-50 border border-slate-200/80">
+          <div class="flex items-center gap-3 mb-3">
+            <div class="w-10 h-10 rounded-xl bg-rose-100 text-rose-800 flex items-center justify-center">
+              <i data-lucide="settings-2" class="w-5 h-5"></i>
+            </div>
+            <h3 class="font-bold text-brand-navy text-lg">Personalização Institucional</h3>
+          </div>
+          <p class="text-slate-600 text-sm leading-relaxed">
+            A profundidade da psicofarmacologia e dos temas clínicos pode ser adaptada ao público contratante e ao escopo de cada categoria profissional.
+          </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer class="bg-[#0A101D] pt-20 pb-8 text-slate-400 relative overflow-hidden">
+  <!-- CTA Final / Proposta -->
+  <section id="proposta" class="section-padding bg-brand-navy text-white text-center">
+    <div class="container-custom max-w-3xl mx-auto">
+      <span class="inline-block text-brand-gold font-bold uppercase tracking-widest text-xs mb-3">Solicitação Institucional</span>
+      <h2 class="text-3xl md:text-4xl font-extrabold mb-4">
+        Pronto para capacitar sua equipe?
+      </h2>
+      <p class="text-slate-300 text-base md:text-lg mb-8 leading-relaxed">
+        Entre em contato conosco e receba uma proposta personalizada de acordo com a realidade e os objetivos da sua instituição.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        <a href="https://wa.me/5567992325513?text=Ol%C3%A1%21%20Gostaria%20de%20uma%20proposta%20para%20a%20capacita%C3%A7%C3%A3o%20em%20Sa%C3%BAde%20Mental%20na%20APS." target="_blank" class="btn-primary">
+          Solicitar proposta para minha equipe
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
+        </a>
+        <a href="/#saude" class="inline-flex items-center justify-center px-6 py-4 rounded-lg font-bold text-white border border-white/30 hover:bg-white hover:text-brand-navy transition-colors text-sm">
+          Ver outras capacitações
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Padrão -->
+  <footer class="bg-[#0A101D] pt-16 pb-8 text-slate-400 relative overflow-hidden">
     <div class="container-custom relative z-10">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-        <div class="flex flex-col gap-6 lg:col-span-1">
-          <div class="flex items-center gap-4">
-            <img src="/assets/mediva-logo-new.png" alt="Logo MEDIVA" class="h-12 w-auto drop-shadow-[0_0_8px_rgba(255,255,255,0.1)]" />
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-14 text-xs">
+        <div class="flex flex-col gap-4">
+          <div class="flex items-center gap-3">
+            <img src="/assets/mediva-logo-new.png" alt="Logo MEDIVA" class="h-10 w-auto" />
             <div class="flex flex-col">
-              <span class="text-white font-heading font-extrabold text-2xl tracking-tight leading-none">MEDIVA</span>
-              <span class="text-[10px] uppercase tracking-widest text-brand-gold font-bold mt-1">Instituto de Educação Médica</span>
+              <span class="text-white font-extrabold text-lg leading-none">Instituto MEDIVA</span>
+              <span class="text-[9px] uppercase tracking-wider text-brand-gold font-bold mt-1">Capacitação e Desenvolvimento Profissional</span>
             </div>
           </div>
-          <p class="text-sm leading-relaxed">Capacitação prática e baseada em evidências para médicos e equipes de saúde na Atenção Primária.</p>
+          <p class="text-slate-400 leading-relaxed">
+            Capacitações presenciais e híbridas em Saúde e Educação para equipes e instituições.
+          </p>
+          <span class="text-amber-200/90 italic font-medium">"Educar hoje. Transformar sempre."</span>
         </div>
+
         <div>
-          <h4 class="text-white font-bold text-lg mb-6 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-brand-gold"></span> Navegação Rápida</h4>
-          <ul class="flex flex-col gap-4">
-            <li><a href="/#desafios" class="text-sm hover:text-brand-gold transition-colors">Por que capacitar</a></li>
-            <li><a href="/#solucoes" class="text-sm hover:text-brand-gold transition-colors">Soluções</a></li>
-            <li><a href="/#programas" class="text-sm hover:text-brand-gold transition-colors">Capacitações</a></li>
-            <li><a href="/#sobre" class="text-sm hover:text-brand-gold transition-colors">Sobre a MEDIVA</a></li>
+          <h4 class="text-white font-bold text-sm uppercase mb-4">Navegação</h4>
+          <ul class="flex flex-col gap-2">
+            <li><a href="/#inicio" class="hover:text-brand-gold transition-colors">Página Inicial</a></li>
+            <li><a href="/#saude" class="hover:text-brand-gold transition-colors">Capacitações em Saúde</a></li>
+            <li><a href="/#educacao" class="hover:text-brand-gold transition-colors">Capacitações em Educação</a></li>
+            <li><a href="/#solucoes" class="hover:text-brand-gold transition-colors">Soluções Institucionais</a></li>
+            <li><a href="/#sobre" class="hover:text-brand-gold transition-colors">Sobre a MEDIVA</a></li>
           </ul>
         </div>
+
         <div>
-          <h4 class="text-white font-bold text-lg mb-6 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-brand-gold"></span> Principais Capacitações</h4>
-          <ul class="flex flex-col gap-4">
-            <li><a href="/programas/atencao-primaria.html" class="text-sm hover:text-brand-gold transition-colors">Atenção Primária e Saúde da Família</a></li>
-            <li><a href="/programas/urgencias.html" class="text-sm hover:text-brand-gold transition-colors">Urgências e Emergências na APS</a></li>
-            <li><a href="/programas/doencas-cronicas.html" class="text-sm hover:text-brand-gold transition-colors">Doenças Crônicas na Prática Clínica</a></li>
-            <li><a href="/programas/saude-mental.html" class="text-sm hover:text-brand-gold transition-colors text-brand-gold">Saúde Mental na APS</a></li>
-            <li><a href="/#programas" class="text-sm hover:text-brand-gold transition-colors text-brand-gold/70">Ver todos os programas &rarr;</a></li>
+          <h4 class="text-white font-bold text-sm uppercase mb-4">Outros Temas em Saúde</h4>
+          <ul class="flex flex-col gap-2">
+            <li><a href="/programas/atencao-primaria.html" class="hover:text-brand-gold transition-colors">Atenção Primária e Saúde da Família</a></li>
+            <li><a href="/programas/urgencias.html" class="hover:text-brand-gold transition-colors">Urgências e Emergências na APS</a></li>
+            <li><a href="/programas/doencas-cronicas.html" class="hover:text-brand-gold transition-colors">Doenças Crônicas na Prática Clínica</a></li>
+            <li><a href="/programas/mulher-crianca.html" class="hover:text-brand-gold transition-colors">Saúde da Mulher e da Criança</a></li>
+            <li><a href="/programas/tea-tdah.html" class="hover:text-brand-gold transition-colors">TEA, TDAH e TOD no Desenv. Infantil</a></li>
           </ul>
         </div>
+
         <div>
-          <h4 class="text-white font-bold text-lg mb-6 flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-brand-gold"></span> Fale Conosco</h4>
-          <ul class="flex flex-col gap-5">
-            <li class="flex items-start gap-3"><i data-lucide="map-pin" class="w-5 h-5 text-brand-gold flex-shrink-0 mt-0.5"></i><span class="text-sm">Palmas — Tocantins</span></li>
-            <li><a href="tel:+556792325513" class="flex items-center gap-3 text-sm hover:text-brand-gold transition-colors"><i data-lucide="phone" class="w-5 h-5 text-brand-gold flex-shrink-0"></i> (67) 9232-5513</a></li>
-            <li><a href="mailto:institutomediva@gmail.com" class="flex items-center gap-3 text-sm hover:text-brand-gold transition-colors"><i data-lucide="mail" class="w-5 h-5 text-brand-gold flex-shrink-0"></i> institutomediva@gmail.com</a></li>
+          <h4 class="text-white font-bold text-sm uppercase mb-4">Contato Institucional</h4>
+          <ul class="flex flex-col gap-2.5">
+            <li class="flex items-start gap-2">
+              <i data-lucide="map-pin" class="w-4 h-4 text-brand-gold flex-shrink-0 mt-0.5"></i>
+              <span>Filadélfia - Tocantins (Atendimento Nacional)</span>
+            </li>
+            <li>
+              <a href="tel:+5567992325513" class="flex items-center gap-2 hover:text-brand-gold transition-colors">
+                <i data-lucide="phone" class="w-4 h-4 text-brand-gold flex-shrink-0"></i> (67) 99232-5513
+              </a>
+            </li>
+            <li>
+              <a href="mailto:institutomediva@gmail.com" class="flex items-center gap-2 hover:text-brand-gold transition-colors">
+                <i data-lucide="mail" class="w-4 h-4 text-brand-gold flex-shrink-0"></i> institutomediva@gmail.com
+              </a>
+            </li>
           </ul>
         </div>
       </div>
-      <div class="border-t border-white/10 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
+
+      <div class="border-t border-white/10 pt-6 flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-slate-500">
         <p>&copy; 2026 Instituto MEDIVA. Todos os direitos reservados.</p>
-        <p>Responsável Técnica: <span class="text-slate-300 font-medium">Dra. Divina Maria Corrêa (CRM 9439 - TO)</span></p>
+        <p><span class="text-slate-300 font-medium">Coordenação Científica: Dra. Divina Maria Corrêa — CRM-TO 9439</span></p>
       </div>
     </div>
   </footer>
+
+  <a href="https://wa.me/5567992325513?text=Ol%C3%A1%21%20Gostaria%20de%20uma%20proposta%20para%20a%20capacita%C3%A7%C3%A3o%20em%20Sa%C3%BAde%20Mental%20na%20APS." target="_blank" aria-label="Converse pelo WhatsApp" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-xl hover:scale-110 hover:shadow-2xl transition-transform duration-300 flex items-center justify-center">
+    <i data-lucide="message-circle" class="w-7 h-7"></i>
+  </a>
 
   <script type="module" src="/src/main.js"></script>
 </body>
