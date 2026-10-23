@@ -252,42 +252,124 @@
     </div>
   </section>
 
-  <!-- Ponto de Âncora Global de Capacitações -->
+  <!-- Âncoras para Navegação Direta -->
   <div id="capacitacoes" class="pt-8 bg-brand-white"></div>
+  <div id="saude" class="-mt-20 pt-20"></div>
+  <div id="educacao" class="-mt-20 pt-20"></div>
 
-  <!-- SEÇÃO 1: Capacitações em Saúde -->
-  <section id="saude" class="section-padding bg-brand-white relative" aria-labelledby="saude-title">
+  <!-- SEÇÃO PRINCIPAL DE CAPACITAÇÕES (HUB INTERATIVO COM JS) -->
+  <section id="capacitacoes-hub" class="section-padding bg-brand-white relative" aria-labelledby="capacitacoes-title">
     <div class="container-custom">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-blue-50 text-brand-navy border border-blue-100 text-xs font-bold uppercase tracking-widest mb-4">
-          <i data-lucide="activity" class="w-3.5 h-3.5 text-blue-600"></i> Área da Saúde
+      
+      <!-- Cabeçalho da Seção -->
+      <div class="text-center max-w-3xl mx-auto mb-10">
+        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-gold/15 text-brand-navy border border-brand-gold/30 text-xs font-bold uppercase tracking-widest mb-4">
+          <i data-lucide="sparkles" class="w-3.5 h-3.5 text-brand-gold"></i> Desenvolvimento Profissional Continuado
         </span>
-        <h2 id="saude-title" class="text-3xl md:text-5xl font-extrabold text-brand-navy mb-4">
-          Capacitações em <span class="text-brand-gold font-light italic">Saúde</span>
+        <h2 id="capacitacoes-title" class="text-3xl md:text-5xl font-extrabold text-brand-navy mb-4 leading-tight">
+          Nossas Capacitações <span class="text-brand-gold font-light italic">e Programas</span>
         </h2>
         <p class="text-slate-600 text-base md:text-lg leading-relaxed">
-          Formações presenciais e híbridas voltadas para a Atenção Primária e equipes multiprofissionais, fortalecendo a prática clínica baseada em evidências, a resolutividade e a humanização do cuidado.
+          Formações presenciais e híbridas estruturadas com rigor científico e aplicabilidade imediata para fortalecer a atuação de equipes em todo o Brasil.
         </p>
       </div>
 
-      <!-- Grid 6 Cursos Saúde -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Barra Interativa de Controle (Tabs + Busca + Alternador de Modo) -->
+      <div class="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 md:p-6 mb-10 shadow-sm">
+        <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          
+          <!-- Filtros de Categoria (Tabs) -->
+          <div class="flex flex-wrap items-center gap-2" role="tablist" aria-label="Filtrar por área">
+            <button type="button" data-filter-tab="saude" role="tab" aria-selected="true" class="px-5 py-2.5 rounded-xl font-bold text-xs md:text-sm transition-all duration-300 flex items-center gap-2 bg-brand-navy text-white shadow-md">
+              <i data-lucide="heart-pulse" class="w-4 h-4 text-blue-400"></i>
+              <span>Saúde</span>
+              <span class="px-2 py-0.5 rounded-full text-[11px] bg-white/20 font-bold">6</span>
+            </button>
+            
+            <button type="button" data-filter-tab="educacao" role="tab" aria-selected="false" class="px-5 py-2.5 rounded-xl font-bold text-xs md:text-sm transition-all duration-300 flex items-center gap-2 bg-white text-slate-700 hover:bg-slate-100 border border-slate-200">
+              <i data-lucide="graduation-cap" class="w-4 h-4 text-brand-gold"></i>
+              <span>Educação</span>
+              <span class="px-2 py-0.5 rounded-full text-[11px] bg-slate-100 text-slate-600 font-bold">6</span>
+            </button>
+            
+            <button type="button" data-filter-tab="todas" role="tab" aria-selected="false" class="px-5 py-2.5 rounded-xl font-bold text-xs md:text-sm transition-all duration-300 flex items-center gap-2 bg-white text-slate-700 hover:bg-slate-100 border border-slate-200">
+              <i data-lucide="layers" class="w-4 h-4 text-slate-500"></i>
+              <span>Todas</span>
+              <span class="px-2 py-0.5 rounded-full text-[11px] bg-slate-100 text-slate-600 font-bold">12</span>
+            </button>
+          </div>
 
-        <!-- Card 1: Atenção Primária -->
-        <div class="rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-slate-200/80 p-7 flex flex-col justify-between group">
-          <div>
-            <div class="w-14 h-14 rounded-2xl bg-blue-50 text-blue-700 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <i data-lucide="heart-pulse" class="w-7 h-7"></i>
+          <!-- Busca Rápida & Modos de Visualização -->
+          <div class="flex flex-wrap items-center gap-3">
+            
+            <!-- Campo de Busca -->
+            <div class="relative flex-grow sm:flex-grow-0 sm:w-64">
+              <i data-lucide="search" class="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"></i>
+              <input id="capacitacoes-search" type="text" placeholder="Buscar por tema..." class="w-full pl-9 pr-8 py-2 rounded-xl text-xs md:text-sm bg-white border border-slate-200 focus:outline-none focus:ring-2 focus:ring-brand-gold/50 focus:border-brand-gold transition-all" />
+              <button id="capacitacoes-search-clear" type="button" aria-label="Limpar busca" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-0.5">
+                <i data-lucide="x" class="w-3.5 h-3.5"></i>
+              </button>
             </div>
-            <h3 class="text-xl font-bold text-brand-navy mb-3 group-hover:text-blue-800 transition-colors">
+
+            <!-- Alternador de Modo (Carrossel vs Grade) -->
+            <div class="flex items-center rounded-xl bg-white border border-slate-200 p-1 shadow-xs">
+              <button id="view-mode-carousel" type="button" aria-label="Modo Carrossel" title="Visualizar em carrossel" class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 bg-brand-navy text-white">
+                <i data-lucide="sliders-horizontal" class="w-3.5 h-3.5"></i>
+                <span class="hidden sm:inline">Carrossel</span>
+              </button>
+              <button id="view-mode-grid" type="button" aria-label="Modo Grade" title="Visualizar em grade" class="px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 bg-white text-slate-600 hover:text-brand-navy">
+                <i data-lucide="layout-grid" class="w-3.5 h-3.5"></i>
+                <span class="hidden sm:inline">Grade</span>
+              </button>
+            </div>
+
+            <!-- Contador de Resultados -->
+            <span id="capacitacoes-count" class="text-xs font-semibold text-slate-500 whitespace-nowrap hidden sm:inline">
+              6 capacitações
+            </span>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Container dos Cards (Interativo via JS: Grade ou Carrossel) -->
+      <div id="capacitacoes-cards" class="transition-all duration-300">
+
+        <!-- CARD 1: Atenção Primária e Saúde da Família (Saúde) -->
+        <div class="capacitacao-card rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-slate-200/80 p-7 flex flex-col justify-between group" data-category="saude">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="heart-pulse" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[10px] uppercase font-extrabold tracking-wider px-2.5 py-1 rounded-full bg-blue-50 text-blue-800 border border-blue-100">
+                Área da Saúde
+              </span>
+            </div>
+            
+            <h3 class="text-xl font-bold text-brand-navy mb-2 group-hover:text-blue-800 transition-colors">
               Atenção Primária e Saúde da Família
             </h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
               Organização do cuidado, raciocínio clínico, prevenção e coordenação na Atenção Primária à Saúde.
             </p>
 
+            <!-- Tópicos Principais (Expansível via JS) -->
+            <button type="button" class="btn-toggle-topics flex items-center justify-between w-full py-2 px-3 my-2 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200/60 text-xs font-semibold text-brand-navy transition-colors">
+              <span class="topics-label">Ver tópicos principais</span>
+              <i data-lucide="chevron-down" class="topics-toggle-icon w-3.5 h-3.5 text-brand-gold transition-transform duration-300"></i>
+            </button>
+            <div class="card-topics-content hidden overflow-hidden pt-2 pb-3">
+              <ul class="text-xs text-slate-600 space-y-1.5 pl-3 border-l-2 border-brand-gold">
+                <li>• Acolhimento, demanda espontânea e sinais de gravidade</li>
+                <li>• Abordagem das queixas e condições mais frequentes</li>
+                <li>• Uso racional de exames e medicamentos</li>
+                <li>• Abordagem familiar: genograma, ecomapa e plano de cuidado</li>
+              </ul>
+            </div>
+
             <!-- Carga Horária -->
-            <div class="mb-5 pb-5 border-b border-slate-100">
+            <div class="mb-4 pb-4 border-b border-slate-100">
               <div class="flex items-center gap-1.5 mb-2">
                 <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-gold"></i>
                 <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Carga Horária</span>
@@ -301,43 +383,62 @@
               <span class="text-[10px] text-slate-400 block">Definida conforme as necessidades da instituição.</span>
             </div>
 
-            <!-- Materiais de apoio -->
-            <div class="mb-6">
+            <!-- Materiais de apoio & Certificado -->
+            <div class="mb-5">
               <div class="flex items-center gap-1.5 mb-2">
                 <i data-lucide="book-open" class="w-3.5 h-3.5 text-brand-gold"></i>
-                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Materiais de apoio</span>
+                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Materiais & Certificação</span>
               </div>
-              <ul class="text-xs text-slate-600 space-y-1.5 pl-4 list-disc marker:text-brand-gold">
+              <ul class="text-xs text-slate-600 space-y-1 pl-4 list-disc marker:text-brand-gold">
                 <li>Guia MEDIVA de Atenção Primária à Saúde</li>
                 <li>Checklists de rastreamento e acompanhamento</li>
-                <li>Ferramentas de abordagem familiar e coordenação</li>
               </ul>
-              <div class="mt-3 flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md w-fit">
+              <div class="mt-2.5 flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md w-fit">
                 <i data-lucide="award" class="w-3.5 h-3.5"></i> Certificado MEDIVA
               </div>
             </div>
           </div>
 
-          <a href="/programas/atencao-primaria.html" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider">
+          <a href="/programas/atencao-primaria.html" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider shadow-sm">
             Saiba Mais <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </a>
         </div>
 
-        <!-- Card 2: Urgências e Emergências -->
-        <div class="rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-slate-200/80 p-7 flex flex-col justify-between group">
+        <!-- CARD 2: Urgências e Emergências na APS (Saúde) -->
+        <div class="capacitacao-card rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-slate-200/80 p-7 flex flex-col justify-between group" data-category="saude">
           <div>
-            <div class="w-14 h-14 rounded-2xl bg-red-50 text-red-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <i data-lucide="ambulance" class="w-7 h-7"></i>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-red-50 text-red-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="ambulance" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[10px] uppercase font-extrabold tracking-wider px-2.5 py-1 rounded-full bg-blue-50 text-blue-800 border border-blue-100">
+                Área da Saúde
+              </span>
             </div>
-            <h3 class="text-xl font-bold text-brand-navy mb-3 group-hover:text-blue-800 transition-colors">
+            
+            <h3 class="text-xl font-bold text-brand-navy mb-2 group-hover:text-blue-800 transition-colors">
               Urgências e Emergências na APS
             </h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
               Reconhecimento de gravidade, estabilização inicial e encaminhamento seguro das principais urgências na Atenção Primária.
             </p>
 
+            <!-- Tópicos Principais -->
+            <button type="button" class="btn-toggle-topics flex items-center justify-between w-full py-2 px-3 my-2 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200/60 text-xs font-semibold text-brand-navy transition-colors">
+              <span class="topics-label">Ver tópicos principais</span>
+              <i data-lucide="chevron-down" class="topics-toggle-icon w-3.5 h-3.5 text-brand-gold transition-transform duration-300"></i>
+            </button>
+            <div class="card-topics-content hidden overflow-hidden pt-2 pb-3">
+              <ul class="text-xs text-slate-600 space-y-1.5 pl-3 border-l-2 border-brand-gold">
+                <li>• Reconhecimento rápido de sinais de gravidade</li>
+                <li>• Estabilização inicial e suporte ventilatório</li>
+                <li>• Anafilaxia, dor torácica, crise hipertensiva e convulsões</li>
+                <li>• Organização e checklist do carrinho de emergência</li>
+              </ul>
+            </div>
+
             <!-- Carga Horária -->
-            <div class="mb-5 pb-5 border-b border-slate-100">
+            <div class="mb-4 pb-4 border-b border-slate-100">
               <div class="flex items-center gap-1.5 mb-2">
                 <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-gold"></i>
                 <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Carga Horária</span>
@@ -351,43 +452,62 @@
               <span class="text-[10px] text-slate-400 block">Definida conforme as necessidades da instituição.</span>
             </div>
 
-            <!-- Materiais de apoio -->
-            <div class="mb-6">
+            <!-- Materiais de apoio & Certificado -->
+            <div class="mb-5">
               <div class="flex items-center gap-1.5 mb-2">
                 <i data-lucide="book-open" class="w-3.5 h-3.5 text-brand-gold"></i>
-                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Materiais de apoio</span>
+                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Materiais & Certificação</span>
               </div>
-              <ul class="text-xs text-slate-600 space-y-1.5 pl-4 list-disc marker:text-brand-gold">
+              <ul class="text-xs text-slate-600 space-y-1 pl-4 list-disc marker:text-brand-gold">
                 <li>Manual MEDIVA de Urgências na APS</li>
                 <li>Algoritmos e fluxos de atendimento inicial</li>
-                <li>Checklist para organização do carrinho de emergência</li>
               </ul>
-              <div class="mt-3 flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md w-fit">
+              <div class="mt-2.5 flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md w-fit">
                 <i data-lucide="award" class="w-3.5 h-3.5"></i> Certificado MEDIVA
               </div>
             </div>
           </div>
 
-          <a href="/programas/urgencias.html" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider">
+          <a href="/programas/urgencias.html" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider shadow-sm">
             Saiba Mais <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </a>
         </div>
 
-        <!-- Card 3: Doenças Crônicas -->
-        <div class="rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-slate-200/80 p-7 flex flex-col justify-between group">
+        <!-- CARD 3: Doenças Crônicas na Prática Clínica (Saúde) -->
+        <div class="capacitacao-card rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-slate-200/80 p-7 flex flex-col justify-between group" data-category="saude">
           <div>
-            <div class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-700 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <i data-lucide="stethoscope" class="w-7 h-7"></i>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="stethoscope" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[10px] uppercase font-extrabold tracking-wider px-2.5 py-1 rounded-full bg-blue-50 text-blue-800 border border-blue-100">
+                Área da Saúde
+              </span>
             </div>
-            <h3 class="text-xl font-bold text-brand-navy mb-3 group-hover:text-blue-800 transition-colors">
+            
+            <h3 class="text-xl font-bold text-brand-navy mb-2 group-hover:text-blue-800 transition-colors">
               Doenças Crônicas na Prática Clínica
             </h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
               Manejo longitudinal, metas terapêuticas e acompanhamento das condições crônicas mais frequentes na Atenção Primária.
             </p>
 
+            <!-- Tópicos Principais -->
+            <button type="button" class="btn-toggle-topics flex items-center justify-between w-full py-2 px-3 my-2 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200/60 text-xs font-semibold text-brand-navy transition-colors">
+              <span class="topics-label">Ver tópicos principais</span>
+              <i data-lucide="chevron-down" class="topics-toggle-icon w-3.5 h-3.5 text-brand-gold transition-transform duration-300"></i>
+            </button>
+            <div class="card-topics-content hidden overflow-hidden pt-2 pb-3">
+              <ul class="text-xs text-slate-600 space-y-1.5 pl-3 border-l-2 border-brand-gold">
+                <li>• Estratificação de risco cardiovascular e renal</li>
+                <li>• Metas individualizadas e insulinoterapia na prática</li>
+                <li>• Estratégias para adesão terapêutica contínua</li>
+                <li>• Prevenção de complicações e organização do cuidado</li>
+              </ul>
+            </div>
+
             <!-- Carga Horária -->
-            <div class="mb-5 pb-5 border-b border-slate-100">
+            <div class="mb-4 pb-4 border-b border-slate-100">
               <div class="flex items-center gap-1.5 mb-2">
                 <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-gold"></i>
                 <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Carga Horária</span>
@@ -401,43 +521,62 @@
               <span class="text-[10px] text-slate-400 block">Definida conforme as necessidades da instituição.</span>
             </div>
 
-            <!-- Materiais de apoio -->
-            <div class="mb-6">
+            <!-- Materiais de apoio & Certificado -->
+            <div class="mb-5">
               <div class="flex items-center gap-1.5 mb-2">
                 <i data-lucide="book-open" class="w-3.5 h-3.5 text-brand-gold"></i>
-                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Materiais de apoio</span>
+                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Materiais & Certificação</span>
               </div>
-              <ul class="text-xs text-slate-600 space-y-1.5 pl-4 list-disc marker:text-brand-gold">
+              <ul class="text-xs text-slate-600 space-y-1 pl-4 list-disc marker:text-brand-gold">
                 <li>Guia MEDIVA de Doenças Crônicas</li>
-                <li>Fluxos de acompanhamento e estratificação de risco</li>
-                <li>Materiais para insulinoterapia e adesão terapêutica</li>
+                <li>Fluxos de acompanhamento e insulinoterapia</li>
               </ul>
-              <div class="mt-3 flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md w-fit">
+              <div class="mt-2.5 flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md w-fit">
                 <i data-lucide="award" class="w-3.5 h-3.5"></i> Certificado MEDIVA
               </div>
             </div>
           </div>
 
-          <a href="/programas/doencas-cronicas.html" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider">
+          <a href="/programas/doencas-cronicas.html" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider shadow-sm">
             Saiba Mais <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </a>
         </div>
 
-        <!-- Card 4: Saúde Mental na APS -->
-        <div class="rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-slate-200/80 p-7 flex flex-col justify-between group">
+        <!-- CARD 4: Saúde Mental na APS (Saúde) -->
+        <div class="capacitacao-card rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-slate-200/80 p-7 flex flex-col justify-between group" data-category="saude">
           <div>
-            <div class="w-14 h-14 rounded-2xl bg-indigo-50 text-indigo-700 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <i data-lucide="brain" class="w-7 h-7"></i>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="brain" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[10px] uppercase font-extrabold tracking-wider px-2.5 py-1 rounded-full bg-blue-50 text-blue-800 border border-blue-100">
+                Área da Saúde
+              </span>
             </div>
-            <h3 class="text-xl font-bold text-brand-navy mb-3 group-hover:text-blue-800 transition-colors">
+            
+            <h3 class="text-xl font-bold text-brand-navy mb-2 group-hover:text-blue-800 transition-colors">
               Saúde Mental na APS
             </h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
               Avaliação inicial, manejo das condições frequentes, psicofarmacologia prática e reconhecimento de situações de maior risco.
             </p>
 
+            <!-- Tópicos Principais -->
+            <button type="button" class="btn-toggle-topics flex items-center justify-between w-full py-2 px-3 my-2 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200/60 text-xs font-semibold text-brand-navy transition-colors">
+              <span class="topics-label">Ver tópicos principais</span>
+              <i data-lucide="chevron-down" class="topics-toggle-icon w-3.5 h-3.5 text-brand-gold transition-transform duration-300"></i>
+            </button>
+            <div class="card-topics-content hidden overflow-hidden pt-2 pb-3">
+              <ul class="text-xs text-slate-600 space-y-1.5 pl-3 border-l-2 border-brand-gold">
+                <li>• Diagnóstico e manejo de ansiedade, depressão e insônia</li>
+                <li>• Reconhecimento de risco e manejo de ideação suicida</li>
+                <li>• Psicofarmacologia prática e racional</li>
+                <li>• Articulação com a RAPS e apoio matricial</li>
+              </ul>
+            </div>
+
             <!-- Carga Horária -->
-            <div class="mb-5 pb-5 border-b border-slate-100">
+            <div class="mb-4 pb-4 border-b border-slate-100">
               <div class="flex items-center gap-1.5 mb-2">
                 <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-gold"></i>
                 <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Carga Horária</span>
@@ -451,43 +590,62 @@
               <span class="text-[10px] text-slate-400 block">Definida conforme as necessidades da instituição.</span>
             </div>
 
-            <!-- Materiais de apoio -->
-            <div class="mb-6">
+            <!-- Materiais de apoio & Certificado -->
+            <div class="mb-5">
               <div class="flex items-center gap-1.5 mb-2">
                 <i data-lucide="book-open" class="w-3.5 h-3.5 text-brand-gold"></i>
-                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Materiais de apoio</span>
+                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Materiais & Certificação</span>
               </div>
-              <ul class="text-xs text-slate-600 space-y-1.5 pl-4 list-disc marker:text-brand-gold">
+              <ul class="text-xs text-slate-600 space-y-1 pl-4 list-disc marker:text-brand-gold">
                 <li>Guia MEDIVA de Saúde Mental na APS</li>
-                <li>Roteiros de avaliação e acompanhamento</li>
-                <li>Fluxos de encaminhamento e psicofarmacologia</li>
+                <li>Roteiros de avaliação e psicofarmacologia</li>
               </ul>
-              <div class="mt-3 flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md w-fit">
+              <div class="mt-2.5 flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md w-fit">
                 <i data-lucide="award" class="w-3.5 h-3.5"></i> Certificado MEDIVA
               </div>
             </div>
           </div>
 
-          <a href="/programas/saude-mental.html" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider">
+          <a href="/programas/saude-mental.html" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider shadow-sm">
             Saiba Mais <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </a>
         </div>
 
-        <!-- Card 5: Saúde da Mulher e da Criança -->
-        <div class="rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-slate-200/80 p-7 flex flex-col justify-between group">
+        <!-- CARD 5: Saúde da Mulher e da Criança (Saúde) -->
+        <div class="capacitacao-card rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-slate-200/80 p-7 flex flex-col justify-between group" data-category="saude">
           <div>
-            <div class="w-14 h-14 rounded-2xl bg-rose-50 text-rose-700 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <i data-lucide="baby" class="w-7 h-7"></i>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-rose-50 text-rose-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="baby" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[10px] uppercase font-extrabold tracking-wider px-2.5 py-1 rounded-full bg-blue-50 text-blue-800 border border-blue-100">
+                Área da Saúde
+              </span>
             </div>
-            <h3 class="text-xl font-bold text-brand-navy mb-3 group-hover:text-blue-800 transition-colors">
+            
+            <h3 class="text-xl font-bold text-brand-navy mb-2 group-hover:text-blue-800 transition-colors">
               Saúde da Mulher e da Criança
             </h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
-              Cuidado integral na APS, do planejamento reprodutivo e pré-natal à puericultura e às condições frequentes da infância.
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+              Cuidado integral na APS, do planejamento reprodutivo e pré-natal à puericultura e condições infantis frequentes.
             </p>
 
+            <!-- Tópicos Principais -->
+            <button type="button" class="btn-toggle-topics flex items-center justify-between w-full py-2 px-3 my-2 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200/60 text-xs font-semibold text-brand-navy transition-colors">
+              <span class="topics-label">Ver tópicos principais</span>
+              <i data-lucide="chevron-down" class="topics-toggle-icon w-3.5 h-3.5 text-brand-gold transition-transform duration-300"></i>
+            </button>
+            <div class="card-topics-content hidden overflow-hidden pt-2 pb-3">
+              <ul class="text-xs text-slate-600 space-y-1.5 pl-3 border-l-2 border-brand-gold">
+                <li>• Pré-natal qualificado e identificação de sinais de alerta</li>
+                <li>• Puericultura e marcos fundamentais do desenvolvimento</li>
+                <li>• Planejamento reprodutivo e rastreamento de neoplasias</li>
+                <li>• Abordagem resolutiva de queixas pediátricas frequentes</li>
+              </ul>
+            </div>
+
             <!-- Carga Horária -->
-            <div class="mb-5 pb-5 border-b border-slate-100">
+            <div class="mb-4 pb-4 border-b border-slate-100">
               <div class="flex items-center gap-1.5 mb-2">
                 <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-gold"></i>
                 <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Carga Horária</span>
@@ -501,43 +659,62 @@
               <span class="text-[10px] text-slate-400 block">Definida conforme as necessidades da instituição.</span>
             </div>
 
-            <!-- Materiais de apoio -->
-            <div class="mb-6">
+            <!-- Materiais de apoio & Certificado -->
+            <div class="mb-5">
               <div class="flex items-center gap-1.5 mb-2">
                 <i data-lucide="book-open" class="w-3.5 h-3.5 text-brand-gold"></i>
-                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Materiais de apoio</span>
+                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Materiais & Certificação</span>
               </div>
-              <ul class="text-xs text-slate-600 space-y-1.5 pl-4 list-disc marker:text-brand-gold">
+              <ul class="text-xs text-slate-600 space-y-1 pl-4 list-disc marker:text-brand-gold">
                 <li>Guia MEDIVA de Saúde da Mulher e da Criança</li>
-                <li>Checklists de pré-natal, puericultura e rastreamento</li>
-                <li>Fluxos de sinais de alerta e encaminhamento</li>
+                <li>Checklists de pré-natal e puericultura</li>
               </ul>
-              <div class="mt-3 flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md w-fit">
+              <div class="mt-2.5 flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md w-fit">
                 <i data-lucide="award" class="w-3.5 h-3.5"></i> Certificado MEDIVA
               </div>
             </div>
           </div>
 
-          <a href="/programas/mulher-crianca.html" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider">
+          <a href="/programas/mulher-crianca.html" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider shadow-sm">
             Saiba Mais <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </a>
         </div>
 
-        <!-- Card 6: TEA, TDAH e TOD -->
-        <div class="rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-slate-200/80 p-7 flex flex-col justify-between group">
+        <!-- CARD 6: TEA, TDAH e TOD no Desenvolvimento Infantil (Saúde) -->
+        <div class="capacitacao-card rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-slate-200/80 p-7 flex flex-col justify-between group" data-category="saude">
           <div>
-            <div class="w-14 h-14 rounded-2xl bg-teal-50 text-teal-700 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <i data-lucide="sparkles" class="w-7 h-7"></i>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="sparkles" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[10px] uppercase font-extrabold tracking-wider px-2.5 py-1 rounded-full bg-blue-50 text-blue-800 border border-blue-100">
+                Área da Saúde
+              </span>
             </div>
-            <h3 class="text-xl font-bold text-brand-navy mb-3 group-hover:text-blue-800 transition-colors">
-              TEA, TDAH e TOD no Desenvolvimento Infantil
+            
+            <h3 class="text-xl font-bold text-brand-navy mb-2 group-hover:text-blue-800 transition-colors">
+              TEA, TDAH e TOD no Desenv. Infantil
             </h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
-              Vigilância do desenvolvimento, rastreamento, avaliação clínica, diagnóstico diferencial e organização do cuidado.
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+              Vigilância do desenvolvimento, rastreamento clínico, diagnóstico diferencial e organização do cuidado na APS.
             </p>
 
+            <!-- Tópicos Principais -->
+            <button type="button" class="btn-toggle-topics flex items-center justify-between w-full py-2 px-3 my-2 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200/60 text-xs font-semibold text-brand-navy transition-colors">
+              <span class="topics-label">Ver tópicos principais</span>
+              <i data-lucide="chevron-down" class="topics-toggle-icon w-3.5 h-3.5 text-brand-gold transition-transform duration-300"></i>
+            </button>
+            <div class="card-topics-content hidden overflow-hidden pt-2 pb-3">
+              <ul class="text-xs text-slate-600 space-y-1.5 pl-3 border-l-2 border-brand-gold">
+                <li>• Vigilância dos marcos do neurodesenvolvimento infantil</li>
+                <li>• Aplicação do M-CHAT-R/F e instrumentos de rastreio</li>
+                <li>• Diagnóstico diferencial e comorbidades comportamentais</li>
+                <li>• Articulação intersetorial entre saúde, escola e família</li>
+              </ul>
+            </div>
+
             <!-- Carga Horária -->
-            <div class="mb-5 pb-5 border-b border-slate-100">
+            <div class="mb-4 pb-4 border-b border-slate-100">
               <div class="flex items-center gap-1.5 mb-2">
                 <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-gold"></i>
                 <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Carga Horária</span>
@@ -551,73 +728,62 @@
               <span class="text-[10px] text-slate-400 block">Definida conforme as necessidades da instituição.</span>
             </div>
 
-            <!-- Materiais de apoio -->
-            <div class="mb-6">
+            <!-- Materiais de apoio & Certificado -->
+            <div class="mb-5">
               <div class="flex items-center gap-1.5 mb-2">
                 <i data-lucide="book-open" class="w-3.5 h-3.5 text-brand-gold"></i>
-                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Materiais de apoio</span>
+                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Materiais & Certificação</span>
               </div>
-              <ul class="text-xs text-slate-600 space-y-1.5 pl-4 list-disc marker:text-brand-gold">
+              <ul class="text-xs text-slate-600 space-y-1 pl-4 list-disc marker:text-brand-gold">
                 <li>Guia MEDIVA de Neurodesenvolvimento na APS</li>
-                <li>Instrumentos e checklists de rastreamento (M-CHAT-R/F)</li>
-                <li>Fluxos de encaminhamento e articulação com a rede</li>
+                <li>Checklists de rastreamento e fluxos de rede</li>
               </ul>
-              <div class="mt-3 flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md w-fit">
+              <div class="mt-2.5 flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md w-fit">
                 <i data-lucide="award" class="w-3.5 h-3.5"></i> Certificado MEDIVA
               </div>
             </div>
           </div>
 
-          <a href="/programas/tea-tdah.html" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider">
+          <a href="/programas/tea-tdah.html" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider shadow-sm">
             Saiba Mais <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </a>
         </div>
 
-      </div>
-
-      <!-- Call to Action Saúde -->
-      <div class="mt-14 text-center">
-        <a href="#contato" class="btn-primary">
-          Solicitar proposta para equipe de Saúde
-          <i data-lucide="arrow-right" class="w-4 h-4"></i>
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- SEÇÃO 2: Capacitações em Educação -->
-  <section id="educacao" class="section-padding bg-brand-offwhite relative border-t border-slate-200/60" aria-labelledby="educacao-title">
-    <div class="container-custom">
-      <div class="text-center max-w-3xl mx-auto mb-16">
-        <span class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-50 text-amber-900 border border-amber-200/80 text-xs font-bold uppercase tracking-widest mb-4">
-          <i data-lucide="graduation-cap" class="w-4 h-4 text-brand-gold"></i> Área da Educação
-        </span>
-        <h2 id="educacao-title" class="text-3xl md:text-5xl font-extrabold text-brand-navy mb-4">
-          Capacitações em <span class="text-brand-gold font-light italic">Educação</span>
-        </h2>
-        <p class="text-slate-600 text-base md:text-lg leading-relaxed">
-          Formações presenciais e híbridas destinadas a professores, gestores, profissionais de apoio, cuidadores e equipes escolares, abordando temas de saúde, segurança, inclusão e bem-estar no ambiente educacional.
-        </p>
-      </div>
-
-      <!-- Grid 6 Cursos Educação -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-        <!-- Card 1: Primeiros Socorros no Ambiente Escolar -->
-        <div class="rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-slate-200/80 p-7 flex flex-col justify-between group">
+        <!-- CARD 7: Primeiros Socorros no Ambiente Escolar (Educação) -->
+        <div class="capacitacao-card rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-slate-200/80 p-7 flex flex-col justify-between group" data-category="educacao">
           <div>
-            <div class="w-14 h-14 rounded-2xl bg-amber-50 text-amber-800 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <i data-lucide="shield-alert" class="w-7 h-7"></i>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-amber-50 text-amber-800 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="shield-alert" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[10px] uppercase font-extrabold tracking-wider px-2.5 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-200">
+                Área da Educação
+              </span>
             </div>
-            <h3 class="text-xl font-bold text-brand-navy mb-3 group-hover:text-amber-800 transition-colors">
+            
+            <h3 class="text-xl font-bold text-brand-navy mb-2 group-hover:text-amber-800 transition-colors">
               Primeiros Socorros no Ambiente Escolar
             </h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
-              Reconhecimento rápido e resposta inicial às principais urgências e emergências no ambiente escolar.
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+              Reconhecimento rápido e resposta inicial segura às principais urgências e acidentes no ambiente escolar.
             </p>
 
+            <!-- Tópicos Principais -->
+            <button type="button" class="btn-toggle-topics flex items-center justify-between w-full py-2 px-3 my-2 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200/60 text-xs font-semibold text-brand-navy transition-colors">
+              <span class="topics-label">Ver tópicos principais</span>
+              <i data-lucide="chevron-down" class="topics-toggle-icon w-3.5 h-3.5 text-brand-gold transition-transform duration-300"></i>
+            </button>
+            <div class="card-topics-content hidden overflow-hidden pt-2 pb-3">
+              <ul class="text-xs text-slate-600 space-y-1.5 pl-3 border-l-2 border-brand-gold">
+                <li>• Obstrução de vias aéreas e manobra de desengasgo (Heimlich)</li>
+                <li>• Convulsões, quedas, traumatismo craniano e sangramentos</li>
+                <li>• Identificação de parada cardiorrespiratória e acionamento (192)</li>
+                <li>• Rotinas preventivas e montagem do kit de primeiros socorros</li>
+              </ul>
+            </div>
+
             <!-- Carga Horária -->
-            <div class="mb-5 pb-5 border-b border-slate-100">
+            <div class="mb-4 pb-4 border-b border-slate-100">
               <div class="flex items-center gap-1.5 mb-2">
                 <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-gold"></i>
                 <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Carga Horária</span>
@@ -631,43 +797,62 @@
               <span class="text-[10px] text-slate-400 block">Definida conforme as necessidades da instituição.</span>
             </div>
 
-            <!-- Materiais de apoio -->
-            <div class="mb-6">
+            <!-- Materiais de apoio & Certificado -->
+            <div class="mb-5">
               <div class="flex items-center gap-1.5 mb-2">
                 <i data-lucide="book-open" class="w-3.5 h-3.5 text-brand-gold"></i>
-                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Materiais de apoio</span>
+                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Materiais & Certificação</span>
               </div>
-              <ul class="text-xs text-slate-600 space-y-1.5 pl-4 list-disc marker:text-brand-gold">
+              <ul class="text-xs text-slate-600 space-y-1 pl-4 list-disc marker:text-brand-gold">
                 <li>Guia MEDIVA de Primeiros Socorros na Escola</li>
                 <li>Fluxos de ação e checklists de emergência</li>
-                <li>Casos práticos e orientações de conduta</li>
               </ul>
-              <div class="mt-3 flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md w-fit">
+              <div class="mt-2.5 flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md w-fit">
                 <i data-lucide="award" class="w-3.5 h-3.5"></i> Certificado MEDIVA
               </div>
             </div>
           </div>
 
-          <a href="/programas/primeiros-socorros-escolar.html" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider">
+          <a href="/programas/primeiros-socorros-escolar.html" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider shadow-sm">
             Saiba Mais <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </a>
         </div>
 
-        <!-- Card 2: TEA e TDAH no Ambiente Escolar -->
-        <div class="rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-slate-200/80 p-7 flex flex-col justify-between group">
+        <!-- CARD 8: TEA e TDAH no Ambiente Escolar (Educação) -->
+        <div class="capacitacao-card rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-slate-200/80 p-7 flex flex-col justify-between group" data-category="educacao">
           <div>
-            <div class="w-14 h-14 rounded-2xl bg-teal-50 text-teal-800 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <i data-lucide="smile" class="w-7 h-7"></i>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-teal-50 text-teal-800 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="smile" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[10px] uppercase font-extrabold tracking-wider px-2.5 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-200">
+                Área da Educação
+              </span>
             </div>
-            <h3 class="text-xl font-bold text-brand-navy mb-3 group-hover:text-amber-800 transition-colors">
+            
+            <h3 class="text-xl font-bold text-brand-navy mb-2 group-hover:text-amber-800 transition-colors">
               TEA e TDAH no Ambiente Escolar
             </h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
               Sinais de alerta, acolhimento, estratégias de apoio e articulação entre escola, família e rede de cuidado.
             </p>
 
+            <!-- Tópicos Principais -->
+            <button type="button" class="btn-toggle-topics flex items-center justify-between w-full py-2 px-3 my-2 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200/60 text-xs font-semibold text-brand-navy transition-colors">
+              <span class="topics-label">Ver tópicos principais</span>
+              <i data-lucide="chevron-down" class="topics-toggle-icon w-3.5 h-3.5 text-brand-gold transition-transform duration-300"></i>
+            </button>
+            <div class="card-topics-content hidden overflow-hidden pt-2 pb-3">
+              <ul class="text-xs text-slate-600 space-y-1.5 pl-3 border-l-2 border-brand-gold">
+                <li>• Compreensão do funcionamento neurológico no TEA e TDAH</li>
+                <li>• Adaptações ambientais, rotinas estruturadas e pistas visuais</li>
+                <li>• Manejo de desregulação sensorial e comportamental</li>
+                <li>• Parceria colaborativa com família, AEE e equipe de saúde</li>
+              </ul>
+            </div>
+
             <!-- Carga Horária -->
-            <div class="mb-5 pb-5 border-b border-slate-100">
+            <div class="mb-4 pb-4 border-b border-slate-100">
               <div class="flex items-center gap-1.5 mb-2">
                 <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-gold"></i>
                 <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Carga Horária</span>
@@ -681,43 +866,62 @@
               <span class="text-[10px] text-slate-400 block">Definida conforme as necessidades da instituição.</span>
             </div>
 
-            <!-- Materiais de apoio -->
-            <div class="mb-6">
+            <!-- Materiais de apoio & Certificado -->
+            <div class="mb-5">
               <div class="flex items-center gap-1.5 mb-2">
                 <i data-lucide="book-open" class="w-3.5 h-3.5 text-brand-gold"></i>
-                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Materiais de apoio</span>
+                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Materiais & Certificação</span>
               </div>
-              <ul class="text-xs text-slate-600 space-y-1.5 pl-4 list-disc marker:text-brand-gold">
+              <ul class="text-xs text-slate-600 space-y-1 pl-4 list-disc marker:text-brand-gold">
                 <li>Guia MEDIVA de TEA e TDAH na Escola</li>
-                <li>Checklist de observação funcional no ambiente escolar</li>
-                <li>Roteiro de comunicação com família e rede</li>
+                <li>Checklist de observação funcional em sala de aula</li>
               </ul>
-              <div class="mt-3 flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md w-fit">
+              <div class="mt-2.5 flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md w-fit">
                 <i data-lucide="award" class="w-3.5 h-3.5"></i> Certificado MEDIVA
               </div>
             </div>
           </div>
 
-          <a href="/programas/tea-tdah-escolar.html" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider">
+          <a href="/programas/tea-tdah-escolar.html" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider shadow-sm">
             Saiba Mais <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </a>
         </div>
 
-        <!-- Card 3: Saúde Mental no Ambiente Escolar -->
-        <div class="rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-slate-200/80 p-7 flex flex-col justify-between group">
+        <!-- CARD 9: Saúde Mental no Ambiente Escolar (Educação) -->
+        <div class="capacitacao-card rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-slate-200/80 p-7 flex flex-col justify-between group" data-category="educacao">
           <div>
-            <div class="w-14 h-14 rounded-2xl bg-indigo-50 text-indigo-800 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <i data-lucide="heart-handshake" class="w-7 h-7"></i>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-indigo-50 text-indigo-800 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="heart-handshake" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[10px] uppercase font-extrabold tracking-wider px-2.5 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-200">
+                Área da Educação
+              </span>
             </div>
-            <h3 class="text-xl font-bold text-brand-navy mb-3 group-hover:text-amber-800 transition-colors">
+            
+            <h3 class="text-xl font-bold text-brand-navy mb-2 group-hover:text-amber-800 transition-colors">
               Saúde Mental no Ambiente Escolar
             </h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
-              Reconhecimento de sinais de sofrimento emocional, acolhimento inicial e encaminhamento responsável.
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+              Reconhecimento de sinais de sofrimento emocional, acolhimento inicial qualificado e encaminhamento responsável.
             </p>
 
+            <!-- Tópicos Principais -->
+            <button type="button" class="btn-toggle-topics flex items-center justify-between w-full py-2 px-3 my-2 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200/60 text-xs font-semibold text-brand-navy transition-colors">
+              <span class="topics-label">Ver tópicos principais</span>
+              <i data-lucide="chevron-down" class="topics-toggle-icon w-3.5 h-3.5 text-brand-gold transition-transform duration-300"></i>
+            </button>
+            <div class="card-topics-content hidden overflow-hidden pt-2 pb-3">
+              <ul class="text-xs text-slate-600 space-y-1.5 pl-3 border-l-2 border-brand-gold">
+                <li>• Identificação de sinais de ansiedade, depressão e retraimento</li>
+                <li>• Escuta ativa e acolhimento seguro no espaço escolar</li>
+                <li>• Condutas diante de automutilação ou ideação suicida</li>
+                <li>• Fluxos de proteção com Conselho Tutelar, CAPSij e rede</li>
+              </ul>
+            </div>
+
             <!-- Carga Horária -->
-            <div class="mb-5 pb-5 border-b border-slate-100">
+            <div class="mb-4 pb-4 border-b border-slate-100">
               <div class="flex items-center gap-1.5 mb-2">
                 <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-gold"></i>
                 <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Carga Horária</span>
@@ -731,43 +935,62 @@
               <span class="text-[10px] text-slate-400 block">Definida conforme as necessidades da instituição.</span>
             </div>
 
-            <!-- Materiais de apoio -->
-            <div class="mb-6">
+            <!-- Materiais de apoio & Certificado -->
+            <div class="mb-5">
               <div class="flex items-center gap-1.5 mb-2">
                 <i data-lucide="book-open" class="w-3.5 h-3.5 text-brand-gold"></i>
-                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Materiais de apoio</span>
+                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Materiais & Certificação</span>
               </div>
-              <ul class="text-xs text-slate-600 space-y-1.5 pl-4 list-disc marker:text-brand-gold">
+              <ul class="text-xs text-slate-600 space-y-1 pl-4 list-disc marker:text-brand-gold">
                 <li>Guia MEDIVA de Saúde Mental na Escola</li>
                 <li>Roteiro de acolhimento e escuta qualificada</li>
-                <li>Fluxos de proteção e articulação com a rede</li>
               </ul>
-              <div class="mt-3 flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md w-fit">
+              <div class="mt-2.5 flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md w-fit">
                 <i data-lucide="award" class="w-3.5 h-3.5"></i> Certificado MEDIVA
               </div>
             </div>
           </div>
 
-          <a href="/programas/saude-mental-escolar.html" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider">
+          <a href="/programas/saude-mental-escolar.html" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider shadow-sm">
             Saiba Mais <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </a>
         </div>
 
-        <!-- Card 4: Inclusão Escolar e Neurodiversidade -->
-        <div class="rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-slate-200/80 p-7 flex flex-col justify-between group">
+        <!-- CARD 10: Inclusão Escolar e Neurodiversidade (Educação) -->
+        <div class="capacitacao-card rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-slate-200/80 p-7 flex flex-col justify-between group" data-category="educacao">
           <div>
-            <div class="w-14 h-14 rounded-2xl bg-purple-50 text-purple-800 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <i data-lucide="users-2" class="w-7 h-7"></i>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-purple-50 text-purple-800 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="users-2" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[10px] uppercase font-extrabold tracking-wider px-2.5 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-200">
+                Área da Educação
+              </span>
             </div>
-            <h3 class="text-xl font-bold text-brand-navy mb-3 group-hover:text-amber-800 transition-colors">
+            
+            <h3 class="text-xl font-bold text-brand-navy mb-2 group-hover:text-amber-800 transition-colors">
               Inclusão Escolar e Neurodiversidade
             </h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
-              Estratégias para ampliar participação, aprendizagem, acessibilidade e acolhimento das diferenças no ambiente escolar.
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+              Estratégias para ampliar participação, aprendizagem, acessibilidade e acolhimento das diferenças na escola.
             </p>
 
+            <!-- Tópicos Principais -->
+            <button type="button" class="btn-toggle-topics flex items-center justify-between w-full py-2 px-3 my-2 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200/60 text-xs font-semibold text-brand-navy transition-colors">
+              <span class="topics-label">Ver tópicos principais</span>
+              <i data-lucide="chevron-down" class="topics-toggle-icon w-3.5 h-3.5 text-brand-gold transition-transform duration-300"></i>
+            </button>
+            <div class="card-topics-content hidden overflow-hidden pt-2 pb-3">
+              <ul class="text-xs text-slate-600 space-y-1.5 pl-3 border-l-2 border-brand-gold">
+                <li>• Princípios práticos da educação inclusiva e acessibilidade</li>
+                <li>• Identificação de barreiras arquitetônicas e pedagógicas</li>
+                <li>• Adaptação curricular e Plano de Desenvolvimento Individual (PDI)</li>
+                <li>• Alinhamento entre professor regente, mediadores e AEE</li>
+              </ul>
+            </div>
+
             <!-- Carga Horária -->
-            <div class="mb-5 pb-5 border-b border-slate-100">
+            <div class="mb-4 pb-4 border-b border-slate-100">
               <div class="flex items-center gap-1.5 mb-2">
                 <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-gold"></i>
                 <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Carga Horária</span>
@@ -781,43 +1004,62 @@
               <span class="text-[10px] text-slate-400 block">Definida conforme as necessidades da instituição.</span>
             </div>
 
-            <!-- Materiais de apoio -->
-            <div class="mb-6">
+            <!-- Materiais de apoio & Certificado -->
+            <div class="mb-5">
               <div class="flex items-center gap-1.5 mb-2">
                 <i data-lucide="book-open" class="w-3.5 h-3.5 text-brand-gold"></i>
-                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Materiais de apoio</span>
+                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Materiais & Certificação</span>
               </div>
-              <ul class="text-xs text-slate-600 space-y-1.5 pl-4 list-disc marker:text-brand-gold">
+              <ul class="text-xs text-slate-600 space-y-1 pl-4 list-disc marker:text-brand-gold">
                 <li>Guia MEDIVA de Inclusão e Neurodiversidade</li>
-                <li>Checklist de identificação de barreiras de acesso</li>
-                <li>Ferramentas práticas para planejamento inclusivo</li>
+                <li>Checklist de barreiras e ferramentas de PDI</li>
               </ul>
-              <div class="mt-3 flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md w-fit">
+              <div class="mt-2.5 flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md w-fit">
                 <i data-lucide="award" class="w-3.5 h-3.5"></i> Certificado MEDIVA
               </div>
             </div>
           </div>
 
-          <a href="/programas/inclusao-neurodiversidade.html" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider">
+          <a href="/programas/inclusao-neurodiversidade.html" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider shadow-sm">
             Saiba Mais <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </a>
         </div>
 
-        <!-- Card 5: Bullying, Violência e Cultura de Paz -->
-        <div class="rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-slate-200/80 p-7 flex flex-col justify-between group">
+        <!-- CARD 11: Bullying, Violência e Cultura de Paz (Educação) -->
+        <div class="capacitacao-card rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-slate-200/80 p-7 flex flex-col justify-between group" data-category="educacao">
           <div>
-            <div class="w-14 h-14 rounded-2xl bg-sky-50 text-sky-800 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <i data-lucide="shield-check" class="w-7 h-7"></i>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-sky-50 text-sky-800 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="shield-check" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[10px] uppercase font-extrabold tracking-wider px-2.5 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-200">
+                Área da Educação
+              </span>
             </div>
-            <h3 class="text-xl font-bold text-brand-navy mb-3 group-hover:text-amber-800 transition-colors">
+            
+            <h3 class="text-xl font-bold text-brand-navy mb-2 group-hover:text-amber-800 transition-colors">
               Bullying, Violência e Cultura de Paz
             </h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
-              Identificação de situações de violência, prevenção do bullying e fortalecimento de relações mais seguras no ambiente escolar.
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
+              Identificação de violência, prevenção de bullying/cyberbullying e fortalecimento do clima escolar seguro.
             </p>
 
+            <!-- Tópicos Principais -->
+            <button type="button" class="btn-toggle-topics flex items-center justify-between w-full py-2 px-3 my-2 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200/60 text-xs font-semibold text-brand-navy transition-colors">
+              <span class="topics-label">Ver tópicos principais</span>
+              <i data-lucide="chevron-down" class="topics-toggle-icon w-3.5 h-3.5 text-brand-gold transition-transform duration-300"></i>
+            </button>
+            <div class="card-topics-content hidden overflow-hidden pt-2 pb-3">
+              <ul class="text-xs text-slate-600 space-y-1.5 pl-3 border-l-2 border-brand-gold">
+                <li>• Distinção entre conflito interpessoal e práticas de bullying</li>
+                <li>• Identificação de sinais velados e prevenção do cyberbullying</li>
+                <li>• Protocolos institucionais de mediação e intervenção</li>
+                <li>• Metodologias de práticas restaurativas e cultura de paz</li>
+              </ul>
+            </div>
+
             <!-- Carga Horária -->
-            <div class="mb-5 pb-5 border-b border-slate-100">
+            <div class="mb-4 pb-4 border-b border-slate-100">
               <div class="flex items-center gap-1.5 mb-2">
                 <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-gold"></i>
                 <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Carga Horária</span>
@@ -831,43 +1073,62 @@
               <span class="text-[10px] text-slate-400 block">Definida conforme as necessidades da instituição.</span>
             </div>
 
-            <!-- Materiais de apoio -->
-            <div class="mb-6">
+            <!-- Materiais de apoio & Certificado -->
+            <div class="mb-5">
               <div class="flex items-center gap-1.5 mb-2">
                 <i data-lucide="book-open" class="w-3.5 h-3.5 text-brand-gold"></i>
-                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Materiais de apoio</span>
+                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Materiais & Certificação</span>
               </div>
-              <ul class="text-xs text-slate-600 space-y-1.5 pl-4 list-disc marker:text-brand-gold">
-                <li>Guia MEDIVA de Prevenção ao Bullying e à Violência</li>
-                <li>Roteiro de acolhimento e registro de situações</li>
-                <li>Estratégias práticas para fortalecimento da cultura de paz</li>
+              <ul class="text-xs text-slate-600 space-y-1 pl-4 list-disc marker:text-brand-gold">
+                <li>Guia MEDIVA de Prevenção ao Bullying</li>
+                <li>Roteiros de registro e estratégias restaurativas</li>
               </ul>
-              <div class="mt-3 flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md w-fit">
+              <div class="mt-2.5 flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md w-fit">
                 <i data-lucide="award" class="w-3.5 h-3.5"></i> Certificado MEDIVA
               </div>
             </div>
           </div>
 
-          <a href="/programas/bullying-cultura-paz.html" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider">
+          <a href="/programas/bullying-cultura-paz.html" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider shadow-sm">
             Saiba Mais <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </a>
         </div>
 
-        <!-- Card 6: Saúde e Bem-Estar do Educador -->
-        <div class="rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-slate-200/80 p-7 flex flex-col justify-between group">
+        <!-- CARD 12: Saúde e Bem-Estar do Educador (Educação) -->
+        <div class="capacitacao-card rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 bg-white border border-slate-200/80 p-7 flex flex-col justify-between group" data-category="educacao">
           <div>
-            <div class="w-14 h-14 rounded-2xl bg-emerald-50 text-emerald-800 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-              <i data-lucide="coffee" class="w-7 h-7"></i>
+            <div class="flex items-center justify-between mb-4">
+              <div class="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-800 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="coffee" class="w-6 h-6"></i>
+              </div>
+              <span class="text-[10px] uppercase font-extrabold tracking-wider px-2.5 py-1 rounded-full bg-amber-50 text-amber-900 border border-amber-200">
+                Área da Educação
+              </span>
             </div>
-            <h3 class="text-xl font-bold text-brand-navy mb-3 group-hover:text-amber-800 transition-colors">
+            
+            <h3 class="text-xl font-bold text-brand-navy mb-2 group-hover:text-amber-800 transition-colors">
               Saúde e Bem-Estar do Educador
             </h3>
-            <p class="text-slate-600 text-sm leading-relaxed mb-6">
+            <p class="text-slate-600 text-sm leading-relaxed mb-4">
               Promoção da saúde, manejo do estresse ocupacional, autocuidado e prevenção do esgotamento profissional.
             </p>
 
+            <!-- Tópicos Principais -->
+            <button type="button" class="btn-toggle-topics flex items-center justify-between w-full py-2 px-3 my-2 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200/60 text-xs font-semibold text-brand-navy transition-colors">
+              <span class="topics-label">Ver tópicos principais</span>
+              <i data-lucide="chevron-down" class="topics-toggle-icon w-3.5 h-3.5 text-brand-gold transition-transform duration-300"></i>
+            </button>
+            <div class="card-topics-content hidden overflow-hidden pt-2 pb-3">
+              <ul class="text-xs text-slate-600 space-y-1.5 pl-3 border-l-2 border-brand-gold">
+                <li>• Reconhecimento precoce de sobrecarga física e emocional</li>
+                <li>• Prevenção da Síndrome de Burnout no magistério</li>
+                <li>• Práticas integrativas de regulação do estresse e rotina</li>
+                <li>• Construção de redes de apoio e acolhimento na equipe</li>
+              </ul>
+            </div>
+
             <!-- Carga Horária -->
-            <div class="mb-5 pb-5 border-b border-slate-100">
+            <div class="mb-4 pb-4 border-b border-slate-100">
               <div class="flex items-center gap-1.5 mb-2">
                 <i data-lucide="clock" class="w-3.5 h-3.5 text-brand-gold"></i>
                 <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Carga Horária</span>
@@ -881,37 +1142,82 @@
               <span class="text-[10px] text-slate-400 block">Definida conforme as necessidades da instituição.</span>
             </div>
 
-            <!-- Materiais de apoio -->
-            <div class="mb-6">
+            <!-- Materiais de apoio & Certificado -->
+            <div class="mb-5">
               <div class="flex items-center gap-1.5 mb-2">
                 <i data-lucide="book-open" class="w-3.5 h-3.5 text-brand-gold"></i>
-                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Materiais de apoio</span>
+                <span class="text-[11px] uppercase font-bold text-slate-400 tracking-wider">Materiais & Certificação</span>
               </div>
-              <ul class="text-xs text-slate-600 space-y-1.5 pl-4 list-disc marker:text-brand-gold">
+              <ul class="text-xs text-slate-600 space-y-1 pl-4 list-disc marker:text-brand-gold">
                 <li>Guia MEDIVA de Saúde e Bem-Estar do Educador</li>
-                <li>Plano prático de autocuidado e rotina saudável</li>
-                <li>Ferramentas para reconhecimento precoce de sobrecarga</li>
+                <li>Plano prático de autocuidado e rotinas saudáveis</li>
               </ul>
-              <div class="mt-3 flex items-center gap-2 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md w-fit">
+              <div class="mt-2.5 flex items-center gap-1.5 text-xs font-semibold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md w-fit">
                 <i data-lucide="award" class="w-3.5 h-3.5"></i> Certificado MEDIVA
               </div>
             </div>
           </div>
 
-          <a href="/programas/bem-estar-educador.html" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider">
+          <a href="/programas/bem-estar-educador.html" class="inline-flex w-full justify-center items-center gap-2 px-5 py-3 bg-brand-navy text-white rounded-xl font-bold hover:bg-brand-gold transition-colors text-xs uppercase tracking-wider shadow-sm">
             Saiba Mais <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
           </a>
         </div>
 
       </div>
 
-      <!-- Call to Action Educação -->
-      <div class="mt-14 text-center">
-        <a href="#contato" class="btn-primary">
-          Solicitar proposta para instituição de Ensino
-          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+      <!-- Estado Vazio (Sem resultados de busca) -->
+      <div id="capacitacoes-empty" class="hidden flex-col items-center justify-center p-12 bg-slate-50 border border-slate-200 rounded-3xl text-center my-6">
+        <div class="w-16 h-16 rounded-full bg-brand-gold/20 flex items-center justify-center text-brand-gold mb-4">
+          <i data-lucide="search-x" class="w-8 h-8"></i>
+        </div>
+        <h4 class="text-xl font-bold text-brand-navy mb-2">Nenhuma capacitação encontrada</h4>
+        <p class="text-slate-600 text-sm max-w-md mb-6 leading-relaxed">
+          Não encontramos resultados para o termo digitado. Tente buscar por outros temas ou explore todas as capacitações.
+        </p>
+        <button id="capacitacoes-empty-reset" type="button" class="btn-secondary text-xs px-6 py-2.5">
+          Ver todas as 12 capacitações
+        </button>
+      </div>
+
+      <!-- Controles de Navegação do Carrossel (Visíveis no modo Carrossel) -->
+      <div id="carousel-controls" class="mt-8 flex flex-col sm:flex-row items-center justify-between gap-4 pt-4 border-t border-slate-100">
+        <!-- Contador -->
+        <div class="flex items-center gap-2 text-xs font-bold text-brand-navy">
+          <span class="text-slate-400">Programa</span>
+          <span id="carousel-current" class="text-brand-gold text-sm font-extrabold">01</span>
+          <span class="text-slate-300">/</span>
+          <span id="carousel-total" class="text-slate-500">06</span>
+        </div>
+
+        <!-- Indicador de Pontos (Dots) -->
+        <div id="carousel-dots" class="flex items-center gap-1.5" role="tablist" aria-label="Navegação do carrossel"></div>
+
+        <!-- Botões Anterior / Próximo -->
+        <div class="flex items-center gap-2">
+          <button id="carousel-prev" type="button" aria-label="Capacitação anterior" class="w-10 h-10 rounded-xl bg-white border border-slate-200 text-brand-navy flex items-center justify-center hover:bg-brand-navy hover:text-white transition-all shadow-xs active:scale-95">
+            <i data-lucide="chevron-left" class="w-5 h-5"></i>
+          </button>
+          <button id="carousel-next" type="button" aria-label="Próxima capacitação" class="w-10 h-10 rounded-xl bg-white border border-slate-200 text-brand-navy flex items-center justify-center hover:bg-brand-navy hover:text-white transition-all shadow-xs active:scale-95">
+            <i data-lucide="chevron-right" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Call to Action Inferior -->
+      <div class="mt-14 p-8 md:p-10 rounded-3xl bg-gradient-to-r from-brand-navy to-slate-900 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl border border-white/10">
+        <div>
+          <span class="text-brand-gold uppercase text-xs font-bold tracking-widest block mb-1">Personalização Institucional</span>
+          <h3 class="text-2xl md:text-3xl font-bold text-white mb-2">Precisa de uma proposta sob medida?</h3>
+          <p class="text-slate-300 text-sm max-w-xl">
+            Adequamos ementas, cargas horárias e cronogramas para Secretarias de Saúde, Secretarias de Educação, hospitais, faculdades e escolas.
+          </p>
+        </div>
+        <a href="https://wa.me/5567992325513?text=Ol%C3%A1%21%20Gostaria%20de%20uma%20proposta%20personalizada%20de%20capacita%C3%A7%C3%A3o%20para%20minha%20institui%C3%A7%C3%A3o." target="_blank" class="btn-primary flex-shrink-0 text-sm py-3.5 px-7">
+          Solicitar Proposta no WhatsApp
+          <i data-lucide="message-circle" class="w-4 h-4"></i>
         </a>
       </div>
+
     </div>
   </section>
 
@@ -921,8 +1227,8 @@
       <div class="grid lg:grid-cols-12 gap-12 items-center">
         <div class="lg:col-span-5 relative flex justify-center">
           <div class="relative w-full max-w-md">
-            <div class="absolute inset-0 bg-brand-gold/10 rounded-3xl transform rotate-3"></div>
-            <img src="/assets/divina.jpeg" alt="Dra. Divina Maria Corrêa" class="relative z-10 w-full rounded-3xl shadow-xl object-cover aspect-[4/5]" />
+            <div class="absolute inset-0 bg-brand-gold/15 rounded-3xl transform rotate-3"></div>
+            <img src="/assets/divina.jpeg" onerror="this.onerror=null;this.src='/assets/mediva4.jpeg'" alt="Dra. Divina Maria Corrêa" class="relative z-10 w-full rounded-3xl shadow-xl object-cover aspect-[4/5] border border-white/60" />
           </div>
         </div>
         <div class="lg:col-span-7">

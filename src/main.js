@@ -1,5 +1,6 @@
 import './style.css';
 import { initProgramCarousel } from './program-carousel.js';
+import { initCapacitacoesHub } from './capacitacoes.js';
 import { gsap as gs } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Lenis from '@studio-freight/lenis';
@@ -195,4 +196,5 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   initProgramCarousel();
+  initCapacitacoesHub();
 });
